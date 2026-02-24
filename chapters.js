@@ -20,23 +20,31 @@ const chapters = [
                 note: "加減法規則：結果的小數位數須與『小數位數最少者』看齊。 \n乘除法規則：結果的有效位數須與『有效位數最少者』看齊。" 
             },
             { 
+                en: "Error Analysis", 
+                pos: "n.", 
+                zh: "誤差分析", 
+                def: "分析測量值與真實值差異的方法。包含系統誤差 (Systematic Error) 與隨機誤差 (Random Error)。",
+                note: "誤差傳播規則：\n1. 加減法：絕對誤差平方和開根號。\n2. 乘除法：相對誤差平方和開根號。"
+            },
+            { 
                 en: "Dimensional Analysis", 
                 pos: "n.", 
                 zh: "因次分析", 
-                def: "利用基本物理量（L, M, T）檢查公式正確性。注意：指數函數 $e^x$、對數 $\\ln(x)$、三角函數 $\\sin(x)$ 的內部必須為『無因次量』。",
-                formula: "$$v = v_0 e^{-kt} \\implies [kt] = 1 \\implies [k] = [t]^{-1}$$"
+                def: "利用基本物理量（L, M, T）檢查公式。注意：指數、對數、三角函數內部必須為無因次量。",
+                formula: "$$v = v_0 e^{-kt} \\implies [kt] = 1 \\implies [k] = [t]^{-1}$$",
+                // 修正後的 note，使用雙反斜線避免亂碼
+                note: "注意：指數函數 $e^x$、對數 $\\ln(x)$、三角函數 $\\sin(x)$ 的內部必須為『無因次量』。"
             },
             { 
-                en: "Dot Product (Scalar Product)", 
+                en: "Dot Product", 
                 pos: "n.", 
-                zh: "內積 (純量積)", 
-                formula: "$$\\vec{A} \\cdot \\vec{B} = AB \\cos \\theta = A_xB_x + A_yB_y + A_zB_z$$" 
+                zh: "內積", 
+                formula: "$$\\vec{A} \\cdot \\vec{B} = AB \\cos \\theta$$" 
             },
             { 
-                en: "Cross Product (Vector Product)", 
+                en: "Cross Product", 
                 pos: "n.", 
-                zh: "外積 (向量積)", 
-                def: "結果為向量，符合右手定則。量值代表兩向量構成之平行四邊形面積。",
+                zh: "外積", 
                 formula: "$$|\\vec{A} \\times \\vec{B}| = AB \\sin \\theta$$",
                 note: "三階行列式計算法：",
                 formula_extra: "$$\\vec{A} \\times \\vec{B} = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ A_x & A_y & A_z \\\\ B_x & B_y & B_z \\end{vmatrix} = (A_yB_z - A_zB_y)\\hat{i} - (A_xB_z - A_zB_x)\\hat{j} + (A_xB_y - A_yB_x)\\hat{k}$$"
@@ -125,3 +133,4 @@ function showMenu() {
 }
 
 document.addEventListener('DOMContentLoaded', init);
+
