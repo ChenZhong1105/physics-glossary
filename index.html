@@ -3,125 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>普通物理專有名詞手冊</title>
+    <title>普通物理英文名詞手冊</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    
-    <style>
-        /* --- CSS 直接寫在這裡 --- */
-        body { font-family: 'Segoe UI', Microsoft JhengHei, sans-serif; margin: 0; background-color: #f0f2f5; color: #333; }
-        .hero { background: #2c3e50; color: white; text-align: center; padding: 50px 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-        .hero h1 { margin: 0; font-size: 2.2em; }
-        .container { max-width: 1000px; margin: 30px auto; padding: 0 20px; text-align: center; }
-        
-        /* 章節網格：手機 2 列 / 電腦 4 列 */
-        .chapter-grid { display: grid; gap: 15px; grid-template-columns: repeat(2, 1fr); }
-        @media (min-width: 800px) { .chapter-grid { grid-template-columns: repeat(4, 1fr); } }
-
-        .chapter-card { 
-            background: white; padding: 25px 10px; border-radius: 12px; cursor: pointer; 
-            border: 1px solid #ddd; transition: 0.3s; box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        }
-        .chapter-card:hover { transform: translateY(-5px); border-color: #3498db; background: #f7fbff; }
-        
-        /* 單字卡片 */
-        .word-card { 
-            background: white; margin: 20px auto; padding: 25px; border-radius: 12px; 
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05); border-left: 6px solid #3498db; 
-            max-width: 750px; text-align: left;
-        }
-        .word-header { font-size: 1.3em; font-weight: bold; color: #2c3e50; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
-        .formula { background: #f8fbfe; padding: 15px; border-radius: 8px; margin: 15px 0; text-align: center; border: 1px dashed #d1d8e0; overflow-x: auto; }
-        
-        #back-btn { background: #e74c3c; color: white; border: none; padding: 10px 25px; border-radius: 20px; cursor: pointer; margin-top: 15px; display: none; }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
     <header class="hero">
         <h1>普通物理專有名詞</h1>
         <p>英翻中 · 觀念補充 · 公式推導</p>
-        <button onclick="showMenu()" id="back-btn">回章節選單</button>
+        <div class="btn-container">
+            <button onclick="showMenu()" id="back-btn" style="display:none;">回章節選單</button>
+        </div>
     </header>
 
     <main class="container">
         <div id="chapter-menu" class="chapter-grid"></div>
         
         <div id="content-area" style="display:none;">
-            <h2 id="chapter-title" style="margin-bottom:30px;"></h2>
+            <h2 id="chapter-title"></h2>
             <div id="word-list"></div>
         </div>
     </main>
 
-    <script>
-        // --- 所有章節資料庫 (1-19) ---
-        const chapters = [
-            { id: 0, title: "基本常識", words: [
-                { en: "Negligible", pos: "adj.", zh: "可忽略的", def: "小到不需考慮。", note: "例如：Air resistance is negligible." },
-                { en: "Uniform", pos: "adj.", zh: "均勻的/等速的", def: "物理性質隨空間或時間不變。", note: "Uniform Circular Motion" }
-            ]},
-            { id: 1, title: "測量與單位", words: [{ en: "Dimensional Analysis", pos: "n.", zh: "量綱分析", def: "檢查等式兩邊單位是否一致。", formula: "$$[L], [M], [T]$$" }]},
-            { id: 2, title: "直線運動", words: [{ en: "Acceleration", pos: "n.", zh: "加速度", def: "速度對時間的變化率。", formula: "$$a = \\frac{dv}{dt}$$" }]},
-            { id: 3, title: "向量", words: [{ en: "Dot Product", pos: "n.", zh: "內積", formula: "$$\\vec{A} \\cdot \\vec{B} = AB \\cos \\theta$$" }]},
-            { id: 4, title: "二維運動", words: [{ en: "Projectile Motion", pos: "n.", zh: "拋體運動", formula: "$$y = (\\tan \\theta)x - \\frac{gx^2}{2(v_0 \\cos \\theta)^2}$$" }]},
-            { id: 5, title: "牛頓定律", words: [{ en: "Inertia", pos: "n.", zh: "慣性", def: "物體維持運動狀態的特性。" }]},
-            { id: 6, title: "摩擦與圓周", words: [{ en: "Centripetal Force", pos: "n.", zh: "向心力", formula: "$$F_c = \\frac{mv^2}{r}$$" }]},
-            { id: 7, title: "功與能", words: [{ en: "Kinetic Energy", pos: "n.", zh: "動能", formula: "$$K = \\frac{1}{2}mv^2$$" }]},
-            { id: 8, title: "位能守恆", words: [{ en: "Potential Energy", pos: "n.", zh: "位能", formula: "$$U = mgh$$" }]},
-            { id: 9, title: "動量碰撞", words: [{ en: "Impulse", pos: "n.", zh: "衝量", formula: "$$J = \\Delta p$$" }]},
-            { id: 10, title: "固定軸轉動", words: [{ en: "Moment of Inertia", pos: "n.", zh: "轉動慣量", formula: "$$I = \\int r^2 dm$$" }]},
-            { id: 11, title: "角動量", words: [{ en: "Angular Momentum", pos: "n.", zh: "角動量", formula: "$$L = I\\omega$$" }]},
-            { id: 12, title: "靜力平衡", words: [{ en: "Equilibrium", pos: "n.", zh: "靜力平衡", formula: "$$\\sum F = 0$$" }]},
-            { id: 13, title: "重力", words: [{ en: "Gravitation", pos: "n.", zh: "萬有引力", formula: "$$F = G\\frac{Mm}{r^2}$$" }]},
-            { id: 14, title: "流體", words: [{ en: "Bernoulli's Eq.", pos: "n.", zh: "伯努利方程式", formula: "$$P + \\frac{1}{2}\\rho v^2 + \\rho gh = C$$" }]},
-            { id: 15, title: "振盪", words: [{ en: "SHM", pos: "n.", zh: "簡諧運動", formula: "$$x(t) = A \\cos(\\omega t + \\phi)$$" }]},
-            { id: 16, title: "波動 I", words: [{ en: "Wave Speed", pos: "n.", zh: "波速", formula: "$$v = f\\lambda$$" }]},
-            { id: 17, title: "波動 II (聲波)", words: [{ en: "Doppler Effect", pos: "n.", zh: "多普勒效應", formula: "$$f' = f \\frac{v \\pm v_o}{v \\mp v_s}$$" }]},
-            { id: 18, title: "熱力一律", words: [{ en: "First Law", pos: "n.", zh: "熱力學第一定律", formula: "$$\\Delta E_{int} = Q - W$$" }]},
-            { id: 19, title: "氣體動力", words: [{ en: "Ideal Gas Law", pos: "n.", zh: "理想氣體定律", formula: "$$PV = nRT$$" }]}
-        ];
-
-        function init() {
-            const menu = document.getElementById('chapter-menu');
-            menu.innerHTML = ''; // 清空預防重複
-            chapters.forEach(ch => {
-                const card = document.createElement('div');
-                card.className = 'chapter-card';
-                card.innerHTML = `<strong>CH ${ch.id}</strong><br>${ch.title}`;
-                card.onclick = () => showChapter(ch.id);
-                menu.appendChild(card);
-            });
-        }
-
-        function showChapter(id) {
-            const ch = chapters.find(c => c.id === id);
-            document.getElementById('chapter-menu').style.display = 'none';
-            document.getElementById('content-area').style.display = 'block';
-            document.getElementById('back-btn').style.display = 'inline-block';
-            document.getElementById('chapter-title').innerText = `Chapter ${ch.id}: ${ch.title}`;
-            
-            const list = document.getElementById('word-list');
-            list.innerHTML = ch.words.map(w => `
-                <div class="word-card">
-                    <div class="word-header">${w.en} <span style="font-size:0.7em; color:#999; margin-left:10px;">${w.pos}</span></div>
-                    <p><strong>中文：</strong>${w.zh}</p>
-                    ${w.def ? `<p><strong>定義：</strong>${w.def}</p>` : ''}
-                    ${w.formula ? `<div class="formula">${w.formula}</div>` : ''}
-                    ${w.note ? `<p style="color:#666; font-size:0.9em;">💡 觀念：${w.note}</p>` : ''}
-                </div>
-            `).join('');
-
-            window.scrollTo(0,0);
-            if(window.MathJax) MathJax.typeset();
-        }
-
-        function showMenu() {
-            document.getElementById('chapter-menu').style.display = 'grid';
-            document.getElementById('content-area').style.display = 'none';
-            document.getElementById('back-btn').style.display = 'none';
-        }
-
-        init();
-    </script>
+    <script src="chapters.js"></script>
 </body>
 </html>
