@@ -26,7 +26,6 @@ const chapters = [
                 zh: "因次分析", 
                 def: "利用基本物理量（L, M, T）檢查公式正確性。",
                 formula: "$$[v] = L T^{-1} = \\frac{L}{T}$$",
-                // 改用純文字與 HTML 上標，徹底避開 MathJax 行內解析與 JS 轉義的衝突
                 note: "💡 補充規則：指數函數 e<sup>x</sup>、對數 ln(x)、三角函數 sin(x) 的內部必須為『無因次量』。",
                 img: "ch1-p2.jpg"
             },
@@ -40,13 +39,38 @@ const chapters = [
                 img: "ch1-p3.jpg" 
             },
             { 
-                en: "Vector Operations", 
+                en: "Unit Vector", 
                 pos: "n.", 
-                zh: "向量運算", 
-                formula: "$$\\vec{A} \\cdot \\vec{B} = AB \\cos \\theta \\\\ |\\vec{A} \\times \\vec{B}| = AB \\sin \\theta$$",
+                zh: "單位向量", 
+                def: "長度（大小）為 1 的向量，專門用來標示方向。",
+                formula: "$$\\hat{u} = \\frac{\\vec{u}}{|\\vec{u}|}$$",
+                img: "ch1-p4.jpg"
+            },
+            { 
+                en: "Dot Product", 
+                pos: "n.", 
+                zh: "內積 (純量積)", 
+                def: "兩向量的內積結果為純量（數值）。",
+                formula: "$$\\vec{A} \\cdot \\vec{B} = AB \\cos \\theta = A_x B_x + A_y B_y + A_z B_z$$",
+                img: "ch1-p5.jpg"
+            },
+            { 
+                en: "Orthogonal Projection", 
+                pos: "n.", 
+                zh: "正射影", 
+                def: "向量 A 在向量 B 方向上的投影。A 在 B 上的正射影向量為「A 與 B 單位向量的內積（投影長）」，再乘上「B 單位向量（方向）」。",
+                formula: "$$\\text{Proj}_{\\vec{B}}\\vec{A} = (\\vec{A} \\cdot \\hat{B})\\hat{B} = \\left(\\frac{\\vec{A} \\cdot \\vec{B}}{|\\vec{B}|^2}\\right)\\vec{B}$$",
+                img: "ch1-p6.jpg"
+            },
+            { 
+                en: "Cross Product", 
+                pos: "n.", 
+                zh: "外積 (向量積)", 
+                def: "兩向量的外積結果為向量，方向符合右手定則。量值等於兩向量構成之平行四邊形面積。",
+                formula: "$$|\\vec{A} \\times \\vec{B}| = AB \\sin \\theta$$",
                 note: "外積三階行列式計算法：",
                 formula_extra: "$$\\vec{A} \\times \\vec{B} = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ A_x & A_y & A_z \\\\ B_x & B_y & B_z \\end{vmatrix}$$",
-                img: "ch1-p4.jpg"
+                img: "ch1-p7.jpg"
             }
         ]
     },
@@ -124,7 +148,6 @@ const chapters = [
             }
         ]
     },
-    // 其餘 5-24 章節預留結構，檔名統一為 chX-p1.jpg
     { id: 5, title: "功與能 (Work and Energy)", words: [{ en: "Work", pos: "n.", zh: "功", formula: "$$W = \\int \\vec{F} \\cdot d\\vec{s}$$", img: "ch5-p1.jpg" }] },
     { id: 6, title: "衝量與動量 (Impulse and Momentum)", words: [{ en: "Momentum", pos: "n.", zh: "動量", formula: "$$\\vec{p} = m\\vec{v}$$", img: "ch6-p1.jpg" }] },
     { id: 7, title: "剛體動力學 (Dynamics of Rigid Bodies)", words: [{ en: "Moment of Inertia", pos: "n.", zh: "轉動慣量", formula: "$$I = \\int r^2 dm$$", img: "ch7-p1.jpg" }] },
@@ -204,4 +227,3 @@ function showMenu() {
 }
 
 document.addEventListener('DOMContentLoaded', init);
-
