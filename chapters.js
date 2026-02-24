@@ -79,8 +79,24 @@ const chapters = [
                 en: "Torque", 
                 pos: "n.", 
                 zh: "力矩", 
+                def: "力對物體產生轉動效果的物理量。",
                 formula: "$$\\vec{\\tau} = \\vec{r} \\times \\vec{F}$$", 
                 img: "ch3-p1.jpg" 
+            },
+            { 
+                en: "Static Equilibrium", 
+                pos: "n.", 
+                zh: "靜力平衡", 
+                def: "物體保持靜止且不轉動的狀態。",
+                formula: "$$\\sum \\vec{F} = 0, \\quad \\sum \\vec{\\tau} = 0$$",
+                img: "ch3-p2.jpg"
+            },
+            { 
+                en: "Center of Gravity", 
+                pos: "n.", 
+                zh: "重心", 
+                def: "重力的等效作用點。",
+                img: "ch3-p3.jpg"
             }
         ]
     },
@@ -164,3 +180,4 @@ function showMenu() {
 }
 
 document.addEventListener('DOMContentLoaded', init);
+
