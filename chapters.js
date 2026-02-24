@@ -3,9 +3,43 @@ const chapters = [
         { en: "Negligible", pos: "adj.", zh: "可忽略的", def: "常用於空氣阻力或摩擦力小到不計的情況。" },
         { en: "Uniform", pos: "adj.", zh: "均勻的/一致的", def: "物理性質隨空間或時間不變。", note: "例如：等速率圓周運動 (Uniform Circular Motion)" }
     ]},
-    { id: 1, title: "物理量", words: [
-        { en: "Significant Figures", pos: "n.", zh: "有效數字", def: "反映測量精密度的可靠位數。" },
-        { en: "Dimensional Analysis", pos: "n.", zh: "因次分析", formula: "$$[v] = [L][T]^{-1}$$" }
+    { id: 1, title: "物理量 (Physical Quantities)", words: [
+        { 
+            en: "Significant Figures", 
+            pos: "n.", 
+            zh: "有效數字", 
+            def: "測量結果中可靠的數字位數加上最後一位估計值。",
+            note: "運算規則：\n1. 加減法：結果的『小數位數』與小數位數最少者相同。\n2. 乘除法：結果的『有效數字位數』與有效數字最少者相同。"
+        },
+        { 
+            en: "Dimensional Analysis", 
+            pos: "n.", 
+            zh: "量綱分析", 
+            def: "利用長度[L]、質量[M]、時間[T]檢查公式。注意：指數函數與三角函數之內部必須為『無因次量(Dimensionless)』。",
+            formula: "$$e^{x}, \\sin(x) \\implies [x] = M^0 L^0 T^0$$"
+        },
+        { 
+            en: "Vector Addition", 
+            pos: "n.", 
+            zh: "向量加法", 
+            def: "符合平行四邊形法或三角形法。",
+            formula: "$$\\vec{R} = \\vec{A} + \\vec{B} = (A_x+B_x)\\hat{i} + (A_y+B_y)\\hat{j}$$"
+        },
+        { 
+            en: "Dot Product (Scalar Product)", 
+            pos: "n.", 
+            zh: "內積 (純量積)", 
+            def: "結果為純量。物理意義為 A 在 B 方向上的投影乘上 B。",
+            formula: "$$\\vec{A} \\cdot \\vec{B} = AB \\cos \\theta = A_x B_x + A_y B_y + A_z B_z$$"
+        },
+        { 
+            en: "Cross Product (Vector Product)", 
+            pos: "n.", 
+            zh: "外積 (向量積)", 
+            def: "結果為向量，方向由右手定則決定。量值為兩向量構成之平行四邊形面積。",
+            formula: "$$|\\vec{A} \\times \\vec{B}| = AB \\sin \\theta$$",
+            note: "三階行列式求法：\n$$\\vec{A} \\times \\vec{B} = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ A_x & A_y & A_z \\\\ B_x & B_y & B_z \\end{vmatrix}$$ \n= $(A_y B_z - A_z B_y)\\hat{i} - (A_x B_z - A_z B_x)\\hat{j} + (A_x B_y - A_y B_x)\\hat{k}$"
+        }
     ]},
     { id: 2, title: "運動學", words: [
         { en: "Instantaneous Velocity", pos: "n.", zh: "瞬時速度", formula: "$$v = \\frac{dx}{dt}$$" },
@@ -108,7 +142,8 @@ function init() {
     chapters.forEach(ch => {
         const card = document.createElement('div');
         card.className = 'chapter-card';
-        card.innerHTML = `<strong>CH ${ch.id}</strong><br>${ch.title}`;
+        // 修改這一行：加入英文標題顯示
+        card.innerHTML = `<strong>第 ${ch.id} 章</strong><br><span style="font-size:0.9em;">${ch.title}</span>`;
         card.onclick = () => showChapter(ch.id);
         menu.appendChild(card);
     });
@@ -143,6 +178,7 @@ function showMenu() {
 
 // 確保 DOM 載入後執行
 window.onload = init;
+
 
 
 
