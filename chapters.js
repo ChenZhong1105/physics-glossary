@@ -43,7 +43,7 @@ const chapters = [
                 pos: "n.", 
                 zh: "單位向量", 
                 def: "長度（大小）為 1 的向量，專門用來標示方向。",
-                formula: "$$\\hat{u} = \\frac{\\vec{u}}{|\\vec{u}|}$$",
+                formula: "$$\\hat{e}_{\\vec{u}} = \\frac{\\vec{u}}{|\\vec{u}|}$$",
                 img: "ch1-p4.jpg"
             },
             { 
@@ -59,7 +59,8 @@ const chapters = [
                 pos: "n.", 
                 zh: "正射影", 
                 def: "向量 A 在向量 B 方向上的投影。A 在 B 上的正射影向量為「A 與 B 單位向量的內積（投影長）」，再乘上「B 單位向量（方向）」。",
-                formula: "$$\\text{Proj}_{\\vec{B}}\\vec{A} = (\\vec{A} \\cdot \\hat{B})\\vec{B} = \\left(\\frac{\\vec{A} \\cdot \\vec{B}}{|\\vec{B}|^2}\\right)\\vec{B}$$",
+                // 這裡已更新為 \hat{e} 以及下標 \vec{B}
+                formula: "$$\\text{Proj}_{\\vec{B}}\\vec{A} = (\\vec{A} \\cdot \\hat{e}_{\\vec{B}})\\hat{e}_{\\vec{B}} = \\left(\\frac{\\vec{A} \\cdot \\vec{B}}{|\\vec{B}|^2}\\right)\\vec{B}$$",
                 img: "ch1-p6.jpg"
             },
             { 
@@ -170,7 +171,6 @@ const chapters = [
     { id: 24, title: "近代物理簡介 (Modern Physics)", words: [{ en: "Photoelectric", pos: "n.", zh: "光電效應", img: "ch24-p1.jpg" }] }
 ];
 
-// --- 核心函數：初始化與渲染 ---
 function init() {
     const menu = document.getElementById('chapter-menu');
     if(!menu) return;
@@ -227,4 +227,3 @@ function showMenu() {
 }
 
 document.addEventListener('DOMContentLoaded', init);
-
