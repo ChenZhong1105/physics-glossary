@@ -4,8 +4,8 @@ const chapters = [
         id: 0, 
         title: "基本常識 (Basic Knowledge)", 
         words: [
-            { en: "Negligible", pos: "adj.", zh: "可忽略的", def: "數值極小而不影響計算結果。", note: "常用於忽略空氣阻力或摩擦力。", img: "ch0-p1.png" },
-            { en: "Uniform", pos: "adj.", zh: "均勻的/一致的", def: "物理量不隨空間或時間改變。", note: "例如：等速率圓周運動 (Uniform Circular Motion)", img: "ch0-p2.png" }
+            { en: "Negligible", pos: "adj.", zh: "可忽略的", def: "數值極小而不影響計算結果。", note: "常用於忽略空氣阻力或摩擦力。", img: "ch0-p1.jpg" },
+            { en: "Uniform", pos: "adj.", zh: "均勻的/一致的", def: "物理量不隨空間或時間改變。", note: "例如：等速率圓周運動 (Uniform Circular Motion)", img: "ch0-p2.jpg" }
         ]
     },
     { 
@@ -18,7 +18,7 @@ const chapters = [
                 zh: "有效數字", 
                 def: "測量值中所有確定的數字加上最後一位估計值。",
                 note: "加減法規則：結果的小數位數須與『小數位數最少者』看齊。 \n乘除法規則：結果的有效位數須與『有效位數最少者』看齊。",
-                img: "ch1-p1.png" 
+                img: "ch1-p1.jpg" 
             },
             { 
                 en: "Dimensional Analysis", 
@@ -27,7 +27,7 @@ const chapters = [
                 def: "利用基本物理量（L, M, T）檢查公式正確性。",
                 formula: "$$[v] = L T^{-1} = \\frac{L}{T}$$",
                 note: "💡 補充規則：指數函數 $e^x$、對數 $\\ln(x)$、三角函數 $\\sin(x)$ 的內部必須為『無因次量』。",
-                img: "ch1-p2.png"
+                img: "ch1-p2.jpg"
             },
             { 
                 en: "Error Analysis", 
@@ -36,33 +36,34 @@ const chapters = [
                 def: "分析測量值與真實值差異的方法。包含系統誤差與隨機誤差。",
                 note: "誤差傳播規則：",
                 formula_extra: "$$加減法：\\Delta z = \\sqrt{(\\Delta x)^2 + (\\Delta y)^2} \\\\ 乘除法：\\frac{\\Delta z}{z} = \\sqrt{(\\frac{\\Delta x}{x})^2 + (\\frac{\\Delta y}{y})^2}$$",
-                img: "ch1-p3.png" 
+                img: "ch1-p3.jpg" 
             },
+            { en: "Dot Product", pos: "n.", zh: "內積", formula: "$$\\vec{A} \\cdot \\vec{B} = AB \\cos \\theta$$", img: "ch1-p4.jpg" },
             { 
-                en: "Dot Product (Scalar Product)", 
-                pos: "n.", 
-                zh: "內積 (純量積)", 
-                formula: "$$\\vec{A} \\cdot \\vec{B} = AB \\cos \\theta = A_xB_x + A_yB_y + A_zB_z$$",
-                img: "ch1-p4.png"
-            },
-            { 
-                en: "Cross Product (Vector Product)", 
-                pos: "n.", 
-                zh: "外積 (向量積)", 
-                def: "結果為向量，符合右手定則。量值代表兩向量構成之平行四邊形面積。",
+                en: "Cross Product", pos: "n.", zh: "外積", 
                 formula: "$$|\\vec{A} \\times \\vec{B}| = AB \\sin \\theta$$",
                 note: "三階行列式計算法：",
                 formula_extra: "$$\\vec{A} \\times \\vec{B} = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ A_x & A_y & A_z \\\\ B_x & B_y & B_z \\end{vmatrix} = (A_yB_z - A_zB_y)\\hat{i} - (A_xB_z - A_zB_x)\\hat{j} + (A_xB_y - A_yB_x)\\hat{k}$$",
-                img: "ch1-p5.png"
+                img: "ch1-p5.jpg" 
             }
         ]
     },
-    // 後續章節預留結構，每個章節先給一個基本單字並預留圖片
-    { id: 2, title: "運動學 (Kinematics)", words: [{ en: "Displacement", pos: "n.", zh: "位移", formula: "$$\\Delta x = x_f - x_i$$", img: "ch2-p1.png" }] },
-    { id: 3, title: "靜力平衡 (Static Equilibrium)", words: [{ en: "Torque", pos: "n.", zh: "力矩", formula: "$$\\vec{\\tau} = \\vec{r} \\times \\vec{F}$$", img: "ch3-p1.png" }] },
-    { id: 4, title: "牛頓運動定律 (Newton's Laws of Motion)", words: [{ en: "Inertia", pos: "n.", zh: "慣性", img: "ch4-p1.png" }] },
-    { id: 5, title: "功與能 (Work and Energy)", words: [{ en: "Kinetic Energy", pos: "n.", zh: "動能", formula: "$$K = \\frac{1}{2}mv^2$$", img: "ch5-p1.png" }] },
-    { id: 6, title: "衝量與動量 (Impulse and Momentum)", words: [{ en: "Linear Momentum", pos: "n.", zh: "線動量", formula: "$$\\vec{p} = m\\vec{v}$$", img: "ch6-p1.png" }] },
+    { 
+        id: 2, 
+        title: "運動學 (Kinematics)", 
+        words: [
+            { en: "Displacement", pos: "n.", zh: "位移", def: "物體位置的變化量，為向量。", formula: "$$\\vec{s} = \\Delta \\vec{r} = \\vec{r}_f - \\vec{r}_i$$", img: "ch2-p1.jpg" },
+            { en: "Average Velocity", pos: "n.", zh: "平均速度", def: "位移對時間的變化率。", formula: "$$\\vec{v}_{avg} = \\frac{\\Delta \\vec{r}}{\\Delta t}$$", img: "ch2-p2.jpg" },
+            { en: "Instantaneous Acceleration", pos: "n.", zh: "瞬時加速度", def: "速度對時間的一階導數，或位移對時間的二階導數。", formula: "$$\\vec{a} = \\frac{d\\vec{v}}{dt} = \\frac{d^2\\vec{r}}{dt^2}$$", img: "ch2-p3.jpg" },
+            { en: "Projectile Motion", pos: "n.", zh: "拋體運動", def: "水平等速運動與鉛直等加速運動的合成。", formula: "Trajectory: $$y = (\\tan\\theta_0)x - \\frac{gx^2}{2(v_0\\cos\\theta_0)^2}$$", img: "ch2-p4.jpg" },
+            { en: "Relative Velocity", pos: "n.", zh: "相對速度", def: "相對於不同參考系的物體速度。", formula: "$$\\vec{v}_{P/A} = \\vec{v}_{P/B} + \\vec{v}_{B/A}$$", img: "ch2-p5.jpg" }
+        ]
+    },
+    // 其餘章節暫時留空，保持結構
+    { id: 3, title: "靜力平衡 (Static Equilibrium)", words: [{ en: "Torque", pos: "n.", zh: "力矩", formula: "$$\\vec{\\tau} = \\vec{r} \\times \\vec{F}$$", img: "ch3-p1.jpg" }] },
+    { id: 4, title: "牛頓運動定律 (Newton's Laws of Motion)", words: [{ en: "Inertia", pos: "n.", zh: "慣性", img: "ch4-p1.jpg" }] },
+    { id: 5, title: "功與能 (Work and Energy)", words: [{ en: "Kinetic Energy", pos: "n.", zh: "動能", formula: "$$K = \\frac{1}{2}mv^2$$", img: "ch5-p1.jpg" }] },
+    { id: 6, title: "衝量與動量 (Impulse and Momentum)", words: [{ en: "Linear Momentum", pos: "n.", zh: "線動量", formula: "$$\\vec{p} = m\\vec{v}$$", img: "ch6-p1.jpg" }] },
     { id: 7, title: "剛體動力學 (Dynamics of Rigid Bodies)", words: [{ en: "Moment of Inertia", pos: "n.", zh: "轉動慣量", formula: "$$I = \\sum m_i r_i^2$$", img: "ch7-p1.png" }] },
     { id: 8, title: "振盪 (Oscillations)", words: [{ en: "Simple Harmonic Motion", pos: "n.", zh: "簡諧運動 (SHM)", img: "ch8-p1.png" }] },
     { id: 9, title: "重力 (Gravitation)", words: [{ en: "Law of Gravitation", pos: "n.", zh: "萬有引力定律", formula: "$$F = G\\frac{m_1 m_2}{r^2}$$", img: "ch9-p1.png" }] },
@@ -83,7 +84,6 @@ const chapters = [
     { id: 24, title: "近代物理簡介 (Introduction to Modern Physics)", words: [{ en: "Photoelectric Effect", pos: "n.", zh: "光電效應", formula: "$$K_{max} = hf - \\Phi$$", img: "ch24-p1.png" }] }
 ];
 
-// 初始化選單
 function init() {
     const menu = document.getElementById('chapter-menu');
     if(!menu) return;
@@ -104,7 +104,6 @@ function init() {
     });
 }
 
-// 顯示章節內容
 function showChapter(id) {
     const ch = chapters.find(c => c.id === id);
     document.getElementById('chapter-menu').style.display = 'none';
@@ -121,7 +120,6 @@ function showChapter(id) {
             ${w.formula ? `<div class="formula">${w.formula}</div>` : ''}
             ${w.note ? `<p style="color:#666; font-size:0.9em;">${w.note}</p>` : ''}
             ${w.formula_extra ? `<div class="formula">${w.formula_extra}</div>` : ''}
-            
             ${w.img ? `<div style="margin: 15px 0 10px 0; text-align: center;">
                         <img src="img/${w.img}" alt="推導照片" style="max-width:100%; border-radius:8px; border:1px solid #ddd; box-shadow: 2px 2px 5px rgba(0,0,0,0.1);" onerror="this.style.display='none'">
                       </div>` : ''}
