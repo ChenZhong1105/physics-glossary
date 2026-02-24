@@ -25,13 +25,13 @@ const chapters = [
                 zh: "因次分析", 
                 def: "利用基本物理量（L, M, T）檢查公式正確性。",
                 formula: "$$v = v_0 e^{-kt} \\implies [kt] = 1 \\implies [k] = [t]^{-1}$$",
-                note: "💡 注意：指數函數 $e^x$、對數 $\\ln(x)$、三角函數 $\\sin(x)$ 的內部必須為『無因次量』。"
+                note: "💡 補充規則：指數函數 $e^x$、對數 $\\ln(x)$、三角函數 $\\sin(x)$ 的內部必須為『無因次量』。"
             },
             { 
                 en: "Error Analysis", 
                 pos: "n.", 
                 zh: "誤差分析", 
-                def: "分析測量值與真實值差異的方法。包含系統誤差 (Systematic Error) 與隨機誤差 (Random Error)。",
+                def: "分析測量值與真實值差異的方法。包含系統誤差與隨機誤差。",
                 note: "誤差傳播規則：",
                 formula_extra: "$$加減法：\\Delta z = \\sqrt{(\\Delta x)^2 + (\\Delta y)^2} \\\\ 乘除法：\\frac{\\Delta z}{z} = \\sqrt{(\\frac{\\Delta x}{x})^2 + (\\frac{\\Delta y}{y})^2}$$"
             },
@@ -72,7 +72,7 @@ const chapters = [
     { id: 19, title: "電磁感應 (Electromagnetic Induction)", words: [] },
     { id: 20, title: "交流電路 (AC Circuits)", words: [] },
     { id: 21, title: "電磁波與磁性 (Electromagnetic Waves and Magnetism)", words: [] },
-    { id: 22, title: "幾幾何光學 (Geometric Optics)", words: [] },
+    { id: 22, title: "幾何光學 (Geometric Optics)", words: [] },
     { id: 23, title: "波動光學 (Wave Optics)", words: [] },
     { id: 24, title: "近代物理簡介 (Introduction to Modern Physics)", words: [] }
 ];
