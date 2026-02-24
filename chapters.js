@@ -19,10 +19,64 @@ const chapters = [
                 def: "物理量不隨空間或時間改變。", 
                 note: "例如：等速率圓周運動 (Uniform Circular Motion)", 
                 img: "ch0-p2.jpg" 
+            },
+            { 
+                en: "Perpendicular", 
+                pos: "adj.", 
+                zh: "垂直的 / 正交的", 
+                def: "兩直線或向量相交成直角（90度）。", 
+                formula: "$$\\vec{A} \\cdot \\vec{B} = 0$$",
+                img: "ch0-p3.jpg" 
+            },
+            { 
+                en: "Magnitude", 
+                pos: "n.", 
+                zh: "量值 / 大小", 
+                def: "物理量的純數值部分，不包含方向。", 
+                formula: "$$|\\vec{A}| = \\sqrt{A_x^2 + A_y^2 + A_z^2}$$",
+                img: "ch0-p4.jpg" 
+            },
+            { 
+                en: "Order of Magnitude", 
+                pos: "n.", 
+                zh: "數量級", 
+                def: "以 10 的次方來表示數值的大致範圍，常用於快速估算。", 
+                img: "ch0-p5.jpg" 
+            },
+            { 
+                en: "Quantum", 
+                pos: "n.", 
+                zh: "量子", 
+                def: "物理量不可分割的最小基本單位。", 
+                img: "ch0-p6.jpg" 
+            },
+            { 
+                en: "Electron", 
+                pos: "n.", 
+                zh: "電子", 
+                def: "帶有基本負電荷的亞原子粒子。", 
+                formula: "$$e \\approx 1.602 \\times 10^{-19} \\text{ C}$$",
+                img: "ch0-p7.jpg" 
+            },
+            { 
+                en: "Planck's Constant", 
+                pos: "n.", 
+                zh: "普朗克常數", 
+                def: "量子力學中的基本常數，描述量子的大小。", 
+                formula: "$$h \\approx 6.626 \\times 10^{-34} \\text{ J}\\cdot\\text{s}$$",
+                img: "ch0-p8.jpg" 
+            },
+            { 
+                en: "Density", 
+                pos: "n.", 
+                zh: "密度", 
+                def: "單位體積內所含的質量。", 
+                formula: "$$\\rho = \\frac{m}{V}$$",
+                img: "ch0-p9.jpg" 
             }
         ]
     },
-    { 
+{ 
         id: 1, 
         title: "物理量 (Physical Quantities)", 
         words: [
@@ -69,12 +123,20 @@ const chapters = [
                 img: "ch1-p5.jpg"
             },
             { 
+                en: "Scalar Projection", 
+                pos: "n.", 
+                zh: "正射影長 (純量投影)", 
+                def: "向量 A 在向量 B 方向上的投影長度。計算方式為 A 向量與 B 的單位向量做內積。",
+                formula: "$$\\text{comp}_{\\vec{B}}\\vec{A} = \\vec{A} \\cdot \\hat{e}_{\\vec{B}} = \\frac{\\vec{A} \\cdot \\vec{B}}{|\\vec{B}|}$$",
+                img: "ch1-p6.jpg"
+            },
+            { 
                 en: "Orthogonal Projection", 
                 pos: "n.", 
-                zh: "正射影", 
-                def: "向量 A 在向量 B 方向上的投影。A 在 B 上的正射影向量為「A 與 B 單位向量的內積（投影長）」，再乘上「B 單位向量（方向）」。",
-                formula: "$$\\text{Proj}_{\\vec{B}}\\vec{A} = (\\vec{A} \\cdot \\hat{e}_{\\vec{B}}) = \\left(\\frac{\\vec{A} \\cdot \\vec{B}}{|\\vec{B}|^2}\\right)\\vec{B}$$",
-                img: "ch1-p6.jpg"
+                zh: "正射影 (向量投影)", 
+                def: "向量 A 在向量 B 方向上的投影向量。等於「正射影長」再乘上「B 的單位向量」。",
+                formula: "$$\\text{Proj}_{\\vec{B}}\\vec{A} = (\\vec{A} \\cdot \\hat{e}_{\\vec{B}})\\hat{e}_{\\vec{B}} = \\left(\\frac{\\vec{A} \\cdot \\vec{B}}{|\\vec{B}|^2}\\right)\\vec{B}$$",
+                img: "ch1-p7.jpg"
             },
             { 
                 en: "Cross Product", 
@@ -84,7 +146,7 @@ const chapters = [
                 formula: "$$|\\vec{A} \\times \\vec{B}| = AB \\sin \\theta$$",
                 note: "外積三階行列式計算法：",
                 formula_extra: "$$\\vec{A} \\times \\vec{B} = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ A_x & A_y & A_z \\\\ B_x & B_y & B_z \\end{vmatrix}$$",
-                img: "ch1-p7.jpg"
+                img: "ch1-p8.jpg"
             }
         ]
     },
@@ -466,4 +528,5 @@ function showMenu() {
 }
 
 document.addEventListener('DOMContentLoaded', init);
+
 
