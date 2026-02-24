@@ -73,7 +73,7 @@ const chapters = [
                 pos: "n.", 
                 zh: "正射影", 
                 def: "向量 A 在向量 B 方向上的投影。A 在 B 上的正射影向量為「A 與 B 單位向量的內積（投影長）」，再乘上「B 單位向量（方向）」。",
-                formula: "$$\\text{Proj}_{\\vec{B}}\\vec{A} = (\\vec{A} \\cdot \\hat{e}_{\\vec{B}})\\hat{e}_{\\vec{B}} = \\left(\\frac{\\vec{A} \\cdot \\vec{B}}{|\\vec{B}|^2}\\right)\\vec{B}$$",
+                formula: "$$\\text{Proj}_{\\vec{B}}\\vec{A} = (\\vec{A} \\cdot \\hat{e}_{\\vec{B}}) = \\left(\\frac{\\vec{A} \\cdot \\vec{B}}{|\\vec{B}|^2}\\right)\\vec{B}$$",
                 img: "ch1-p6.jpg"
             },
             { 
@@ -466,3 +466,4 @@ function showMenu() {
 }
 
 document.addEventListener('DOMContentLoaded', init);
+
