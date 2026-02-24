@@ -10,7 +10,7 @@ const chapters = [
     },
     { 
         id: 1, 
-        title: "因次分析 (Dimensional Analysis)", 
+        title: "物理量 (Physical Quantities)", 
         words: [
             { 
                 en: "Significant Figures", 
@@ -20,10 +20,10 @@ const chapters = [
                 note: "加減法規則：結果的小數位數須與『小數位數最少者』看齊。 \n乘除法規則：結果的有效位數須與『有效位數最少者』看齊。" 
             },
             { 
-                en: "Dimensionless Quantity", 
+                en: "Dimensional Analysis", 
                 pos: "n.", 
-                zh: "無因次量", 
-                def: "純數值，沒有單位。在因次分析中，指數函數 $e^x$、對數 $\\ln(x)$、三角函數 $\\sin(x)$ 的參數 $x$ 必須是無因次量。",
+                zh: "因次分析", 
+                def: "利用基本物理量（L, M, T）檢查公式正確性。注意：指數函數 $e^x$、對數 $\\ln(x)$、三角函數 $\\sin(x)$ 的內部必須為『無因次量』。",
                 formula: "$$v = v_0 e^{-kt} \\implies [kt] = 1 \\implies [k] = [t]^{-1}$$"
             },
             { 
@@ -112,19 +112,16 @@ function showChapter(id) {
         </div>
     `).join('');
     
-    // 回到頂部並觸發 MathJax 渲染
     window.scrollTo(0,0);
     if(window.MathJax) {
         MathJax.typeset();
     }
 }
 
-// 返回選單
 function showMenu() {
     document.getElementById('chapter-menu').style.display = 'grid';
     document.getElementById('content-area').style.display = 'none';
     document.getElementById('back-btn').style.display = 'none';
 }
 
-// 確保 DOM 載入後執行初始化
 document.addEventListener('DOMContentLoaded', init);
