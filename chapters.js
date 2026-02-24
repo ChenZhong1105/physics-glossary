@@ -1,140 +1,74 @@
+// 所有的章節資料庫 (Chapter 0 - 24)
 const chapters = [
-    { id: 0, title: "基本常識", words: [
-        { en: "Negligible", pos: "adj.", zh: "可忽略的", def: "常用於空氣阻力或摩擦力小到不計的情況。" },
-        { en: "Uniform", pos: "adj.", zh: "均勻的/一致的", def: "物理性質隨空間或時間不變。", note: "例如：等速率圓周運動 (Uniform Circular Motion)" }
-    ]},
-    { id: 1, title: "物理量 (Physical Quantities)", words: [
-        { 
-            en: "Significant Figures", 
-            pos: "n.", 
-            zh: "有效數字", 
-            def: "測量結果中可靠的數字位數加上最後一位估計值。",
-            note: "運算規則：\n1. 加減法：結果的『小數位數』與小數位數最少者相同。\n2. 乘除法：結果的『有效數字位數』與有效數字最少者相同。"
-        },
-        { 
-            en: "Dimensional Analysis", 
-            pos: "n.", 
-            zh: "量綱分析", 
-            def: "利用長度[L]、質量[M]、時間[T]檢查公式。注意：指數函數與三角函數之內部必須為『無因次量(Dimensionless)』。",
-            formula: "$$e^{x}, \\sin(x) \\implies [x] = M^0 L^0 T^0$$"
-        },
-        { 
-            en: "Vector Addition", 
-            pos: "n.", 
-            zh: "向量加法", 
-            def: "符合平行四邊形法或三角形法。",
-            formula: "$$\\vec{R} = \\vec{A} + \\vec{B} = (A_x+B_x)\\hat{i} + (A_y+B_y)\\hat{j}$$"
-        },
-        { 
-            en: "Dot Product (Scalar Product)", 
-            pos: "n.", 
-            zh: "內積 (純量積)", 
-            def: "結果為純量。物理意義為 A 在 B 方向上的投影乘上 B。",
-            formula: "$$\\vec{A} \\cdot \\vec{B} = AB \\cos \\theta = A_x B_x + A_y B_y + A_z B_z$$"
-        },
-        { 
-            en: "Cross Product (Vector Product)", 
-            pos: "n.", 
-            zh: "外積 (向量積)", 
-            def: "結果為向量，方向由右手定則決定。量值為兩向量構成之平行四邊形面積。",
-            formula: "$$|\\vec{A} \\times \\vec{B}| = AB \\sin \\theta$$",
-            note: "三階行列式求法：\n$$\\vec{A} \\times \\vec{B} = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ A_x & A_y & A_z \\\\ B_x & B_y & B_z \\end{vmatrix}$$ \n= $(A_y B_z - A_z B_y)\\hat{i} - (A_x B_z - A_z B_x)\\hat{j} + (A_x B_y - A_y B_x)\\hat{k}$"
-        }
-    ]},
-    { id: 2, title: "運動學", words: [
-        { en: "Instantaneous Velocity", pos: "n.", zh: "瞬時速度", formula: "$$v = \\frac{dx}{dt}$$" },
-        { en: "Centripetal Acceleration", pos: "n.", zh: "向心加速度", formula: "$$a_c = \\frac{v^2}{r}$$" }
-    ]},
-    { id: 3, title: "靜力平衡", words: [
-        { en: "Torque", pos: "n.", zh: "力矩", formula: "$$\\vec{\\tau} = \\vec{r} \\times \\vec{F}$$" },
-        { en: "Static Equilibrium", pos: "n.", zh: "靜力平衡", formula: "$$\\sum \\vec{F}=0, \\sum \\vec{\\tau}=0$$" }
-    ]},
-    { id: 4, title: "牛頓運動定律", words: [
-        { en: "Friction", pos: "n.", zh: "摩擦力", formula: "$$f_k = \\mu_k N$$" },
-        { en: "Inertial Reference Frame", pos: "n.", zh: "慣性參考座標系" }
-    ]},
-    { id: 5, title: "功與能", words: [
-        { en: "Work-Kinetic Energy Theorem", pos: "n.", zh: "功能原理", formula: "$$W = \\Delta K$$" },
-        { en: "Conservation of Mechanical Energy", pos: "n.", zh: "力學能守恆定律", formula: "$$K_1+U_1 = K_2+U_2$$" }
-    ]},
-    { id: 6, title: "衝量與動量", words: [
-        { en: "Impulse", pos: "n.", zh: "衝量", formula: "$$\\vec{J} = \\int \\vec{F} dt = \\Delta \\vec{p}$$" },
-        { en: "Angular Momentum", pos: "n.", zh: "角動量", formula: "$$\\vec{L} = \\vec{r} \\times \\vec{p}$$" }
-    ]},
-    { id: 7, title: "剛體動力學", words: [
-        { en: "Moment of Inertia", pos: "n.", zh: "轉動慣量", formula: "$$I = \\sum m_i r_i^2$$" },
-        { en: "Parallel-Axis Theorem", pos: "n.", zh: "平行軸定理", formula: "$$I = I_{cm} + Mh^2$$" }
-    ]},
-    { id: 8, title: "振盪", words: [
-        { en: "Simple Harmonic Motion", pos: "n.", zh: "簡諧運動", formula: "$$x(t) = A\\cos(\\omega t + \\phi)$$" },
-        { en: "Damped Oscillation", pos: "n.", zh: "阻尼振盪" }
-    ]},
-    { id: 9, title: "重力", words: [
-        { en: "Universal Gravitation", pos: "n.", zh: "萬有引力", formula: "$$F = G\\frac{m_1 m_2}{r^2}$$" },
-        { en: "Kepler's Laws", pos: "n.", zh: "克卜勒行星運動定律" }
-    ]},
-    { id: 10, title: "流體力學", words: [
-        { en: "Buoyancy", pos: "n.", zh: "浮力", formula: "$$B = \\rho_{fluid} V_{sub} g$$" },
-        { en: "Bernoulli's Equation", pos: "n.", zh: "伯努利方程式", formula: "$$P + \\frac{1}{2}\\rho v^2 + \\rho gh = \\text{const}$$" }
-    ]},
-    { id: 11, title: "波動", words: [
-        { en: "Doppler Effect", pos: "n.", zh: "都卜勒效應", formula: "$$f' = f \\frac{v \\pm v_o}{v \\mp v_s}$$" },
-        { en: "Interference", pos: "n.", zh: "干涉" }
-    ]},
-    { id: 12, title: "溫度與熱量", words: [
-        { en: "Specific Heat", pos: "n.", zh: "比熱", formula: "$$Q = mc\\Delta T$$" },
-        { en: "Thermal Expansion", pos: "n.", zh: "熱膨脹" }
-    ]},
-    { id: 13, title: "熱力學第一定律", words: [
-        { en: "Ideal Gas Law", pos: "n.", zh: "理想氣體性質", formula: "$$PV = nRT$$" },
-        { en: "First Law of Thermodynamics", pos: "n.", zh: "熱力學第一定律", formula: "$$\\Delta E_{int} = Q - W$$" }
-    ]},
-    { id: 14, title: "熵與熱力學第二定律", words: [
-        { en: "Entropy", pos: "n.", zh: "熵", formula: "$$dS = \\frac{dQ_{rev}}{T}$$" },
-        { en: "Carnot Engine", pos: "n.", zh: "卡諾熱機" }
-    ]},
-    { id: 15, title: "電場與電位", words: [
-        { en: "Coulomb's Law", pos: "n.", zh: "庫侖定律", formula: "$$F = k\\frac{|q_1 q_2|}{r^2}$$" },
-        { en: "Gauss's Law", pos: "n.", zh: "電場高斯定律", formula: "$$\\oint \\vec{E} \\cdot d\\vec{A} = \\frac{q_{en}}{\\epsilon_0}$$" }
-    ]},
-    { id: 16, title: "直流電路", words: [
-        { en: "Ohm's Law", pos: "n.", zh: "歐姆定律", formula: "$$V = IR$$" },
-        { en: "Electromotive Force (EMF)", pos: "n.", zh: "電動勢" }
-    ]},
-    { id: 17, title: "電容與介電質", words: [
-        { en: "Capacitance", pos: "n.", zh: "電容", formula: "$$C = \\frac{Q}{V}$$" },
-        { en: "Dielectric", pos: "n.", zh: "介電質" }
-    ]},
-    { id: 18, title: "磁場", words: [
-        { en: "Lorentz Force", pos: "n.", zh: "勞侖茲力", formula: "$$\\vec{F} = q(\\vec{E} + \\vec{v} \\times \\vec{B})$$" },
-        { en: "Magnetic Dipole Moment", pos: "n.", zh: "磁偶極矩" }
-    ]},
-    { id: 19, title: "電磁感應", words: [
-        { en: "Faraday's Law", pos: "n.", zh: "法拉第電磁感應定律", formula: "$$\\mathcal{E} = -\\frac{d\\Phi_B}{dt}$$" },
-        { en: "Inductance", pos: "n.", zh: "電感" }
-    ]},
-    { id: 20, title: "交流電路", words: [
-        { en: "Transformer", pos: "n.", zh: "變壓器", formula: "$$\\frac{V_p}{V_s} = \\frac{N_p}{N_s}$$" },
-        { en: "Reactance", pos: "n.", zh: "電抗" }
-    ]},
-    { id: 21, title: "電磁波與物質之磁性", words: [
-        { en: "Maxwell's Equations", pos: "n.", zh: "馬克思威爾方程式", note: "包含高斯定律、法拉第定律等四條方程。" }
-    ]},
-    { id: 22, title: "幾何光學", words: [
-        { en: "Refraction", pos: "n.", zh: "折射", formula: "$$n_1 \\sin \\theta_1 = n_2 \\sin \\theta_2$$" },
-        { en: "Lenses", pos: "n.", zh: "透鏡成像" }
-    ]},
-    { id: 23, title: "波動光學", words: [
-        { en: "Diffraction", pos: "n.", zh: "繞射" },
-        { en: "Interference", pos: "n.", zh: "干涉", note: "如楊氏雙狹縫干涉。" }
-    ]},
-    { id: 24, title: "近代物理簡介", words: [
-        { en: "Special Relativity", pos: "n.", zh: "特殊相對論", formula: "$$E = mc^2$$" },
-        { en: "Photoelectric Effect", pos: "n.", zh: "光電效應", formula: "$$hf = K_{max} + \\Phi$$" },
-        { en: "Uncertainty Principle", pos: "n.", zh: "測不準原理", formula: "$$\\Delta x \\Delta p \\geq \\frac{\\hbar}{2}$$" }
-    ]}
+    { 
+        id: 0, 
+        title: "基本常識 (Basic Knowledge)", 
+        words: [
+            { en: "Negligible", pos: "adj.", zh: "可忽略的", def: "數值極小而不影響計算結果。", note: "常用於忽略空氣阻力或摩擦力。" },
+            { en: "Uniform", pos: "adj.", zh: "均勻的/一致的", def: "物理量不隨空間或時間改變。", note: "例如：等速率圓周運動 (Uniform Circular Motion)" }
+        ]
+    },
+    { 
+        id: 1, 
+        title: "因次分析 (Dimensional Analysis)", 
+        words: [
+            { 
+                en: "Significant Figures", 
+                pos: "n.", 
+                zh: "有效數字", 
+                def: "測量值中所有確定的數字加上最後一位估計值。",
+                note: "加減法規則：結果的小數位數須與『小數位數最少者』看齊。 \n乘除法規則：結果的有效位數須與『有效位數最少者』看齊。" 
+            },
+            { 
+                en: "Dimensionless Quantity", 
+                pos: "n.", 
+                zh: "無因次量", 
+                def: "純數值，沒有單位。在因次分析中，指數函數 $e^x$、對數 $\\ln(x)$、三角函數 $\\sin(x)$ 的參數 $x$ 必須是無因次量。",
+                formula: "$$v = v_0 e^{-kt} \\implies [kt] = 1 \\implies [k] = [t]^{-1}$$"
+            },
+            { 
+                en: "Dot Product (Scalar Product)", 
+                pos: "n.", 
+                zh: "內積 (純量積)", 
+                formula: "$$\\vec{A} \\cdot \\vec{B} = AB \\cos \\theta = A_xB_x + A_yB_y + A_zB_z$$" 
+            },
+            { 
+                en: "Cross Product (Vector Product)", 
+                pos: "n.", 
+                zh: "外積 (向量積)", 
+                def: "結果為向量，符合右手定則。量值代表兩向量構成之平行四邊形面積。",
+                formula: "$$|\\vec{A} \\times \\vec{B}| = AB \\sin \\theta$$",
+                note: "三階行列式計算法：",
+                formula_extra: "$$\\vec{A} \\times \\vec{B} = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ A_x & A_y & A_z \\\\ B_x & B_y & B_z \\end{vmatrix} = (A_yB_z - A_zB_y)\\hat{i} - (A_xB_z - A_zB_x)\\hat{j} + (A_xB_y - A_yB_x)\\hat{k}$$"
+            }
+        ]
+    },
+    { id: 2, title: "運動學 (Kinematics)", words: [] },
+    { id: 3, title: "靜力平衡 (Static Equilibrium)", words: [] },
+    { id: 4, title: "牛頓運動定律 (Newton's Laws of Motion)", words: [] },
+    { id: 5, title: "功與能 (Work and Energy)", words: [] },
+    { id: 6, title: "衝量與動量 (Impulse and Momentum)", words: [] },
+    { id: 7, title: "剛體動力學 (Dynamics of Rigid Bodies)", words: [] },
+    { id: 8, title: "振盪 (Oscillations)", words: [] },
+    { id: 9, title: "重力 (Gravitation)", words: [] },
+    { id: 10, title: "流體力學 (Fluid Mechanics)", words: [] },
+    { id: 11, title: "波動 (Waves)", words: [] },
+    { id: 12, title: "溫度與熱量 (Temperature and Heat)", words: [] },
+    { id: 13, title: "熱力學第一定律 (The First Law of Thermodynamics)", words: [] },
+    { id: 14, title: "熵與熱力學第二定律 (Entropy and The Second Law)", words: [] },
+    { id: 15, title: "電場與電位 (Electric Fields and Potential)", words: [] },
+    { id: 16, title: "直流電路 (DC Circuits)", words: [] },
+    { id: 17, title: "電容與介電質 (Capacitance and Dielectrics)", words: [] },
+    { id: 18, title: "磁場 (Magnetic Fields)", words: [] },
+    { id: 19, title: "電磁感應 (Electromagnetic Induction)", words: [] },
+    { id: 20, title: "交流電路 (AC Circuits)", words: [] },
+    { id: 21, title: "電磁波與磁性 (Electromagnetic Waves and Magnetism)", words: [] },
+    { id: 22, title: "幾何光學 (Geometric Optics)", words: [] },
+    { id: 23, title: "波動光學 (Wave Optics)", words: [] },
+    { id: 24, title: "近代物理簡介 (Introduction to Modern Physics)", words: [] }
 ];
 
+// 初始化選單
 function init() {
     const menu = document.getElementById('chapter-menu');
     if(!menu) return;
@@ -142,13 +76,23 @@ function init() {
     chapters.forEach(ch => {
         const card = document.createElement('div');
         card.className = 'chapter-card';
-        // 修改這一行：加入英文標題顯示
-        card.innerHTML = `<strong>第 ${ch.id} 章</strong><br><span style="font-size:0.9em;">${ch.title}</span>`;
+        
+        // 分割中英文標題
+        const titleParts = ch.title.split(' (');
+        const chineseTitle = titleParts[0];
+        const englishTitle = titleParts[1] ? titleParts[1].replace(')', '') : '';
+        
+        card.innerHTML = `
+            <strong>第 ${ch.id} 章</strong><br>
+            <div style="font-size: 1.1em; margin-top: 5px;">${chineseTitle}</div>
+            <div style="font-size: 0.8em; color: #7f8c8d; font-style: italic; margin-top: 3px;">${englishTitle}</div>
+        `;
         card.onclick = () => showChapter(ch.id);
         menu.appendChild(card);
     });
 }
 
+// 顯示章節內容
 function showChapter(id) {
     const ch = chapters.find(c => c.id === id);
     document.getElementById('chapter-menu').style.display = 'none';
@@ -159,26 +103,28 @@ function showChapter(id) {
     const list = document.getElementById('word-list');
     list.innerHTML = ch.words.map(w => `
         <div class="word-card">
-            <div class="word-header">${w.en} <span style="font-size:0.7em; color:#999; margin-left:10px;">${w.pos}</span></div>
+            <div class="word-header">${w.en} <span style="font-size:0.75em; color:#888; margin-left:10px;">${w.pos}</span></div>
             <p><strong>中文：</strong>${w.zh}</p>
             ${w.def ? `<p><strong>定義：</strong>${w.def}</p>` : ''}
             ${w.formula ? `<div class="formula">${w.formula}</div>` : ''}
-            ${w.note ? `<p style="color:#666; font-size:0.9em;">💡 觀念：${w.note}</p>` : ''}
+            ${w.note ? `<p style="color:#666; font-size:0.9em;">💡 ${w.note}</p>` : ''}
+            ${w.formula_extra ? `<div class="formula">${w.formula_extra}</div>` : ''}
         </div>
     `).join('');
+    
+    // 回到頂部並觸發 MathJax 渲染
     window.scrollTo(0,0);
-    if(window.MathJax) MathJax.typeset();
+    if(window.MathJax) {
+        MathJax.typeset();
+    }
 }
 
+// 返回選單
 function showMenu() {
     document.getElementById('chapter-menu').style.display = 'grid';
     document.getElementById('content-area').style.display = 'none';
     document.getElementById('back-btn').style.display = 'none';
 }
 
-// 確保 DOM 載入後執行
-window.onload = init;
-
-
-
-
+// 確保 DOM 載入後執行初始化
+document.addEventListener('DOMContentLoaded', init);
