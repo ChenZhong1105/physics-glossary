@@ -1,92 +1,103 @@
 const chapters = [
-    { id: 0, title: "基本常識 (Basic Vocabulary)", words: [
-        { en: "Negligible", pos: "adj.", zh: "可忽略的", def: "數值極小而不影響計算結果。", note: "常用於忽略空氣阻力或摩擦力。" },
-        { en: "Uniform", pos: "adj.", zh: "均勻的/等速的", def: "物理量不隨空間或時間改變。", note: "如 Uniform Electric Field (均勻電場)。" },
-        { en: "Magnitude", pos: "n.", zh: "量值", def: "向量的大小（不含方向）。", note: "純量只有 Magnitude。" },
-        { en: "Coordinate System", pos: "n.", zh: "座標系", def: "用來確定質點位置的系統。" }
+    { id: 0, title: "基本常識", words: [
+        { en: "Negligible", pos: "adj.", zh: "可忽略的", def: "常用於空氣阻力或摩擦力小到不計的情況。" },
+        { en: "Uniform", pos: "adj.", zh: "均勻的/一致的", def: "物理性質隨空間或時間不變。", note: "例如：等速率圓周運動 (Uniform Circular Motion)" }
     ]},
-    { id: 1, title: "Measurement", words: [
-        { en: "Dimensional Analysis", pos: "n.", zh: "量綱分析", def: "利用長度[L]、質量[M]、時間[T]檢查公式正確性。", formula: "$$[v] = [L][T]^{-1}, [a] = [L][T]^{-2}$$" },
-        { en: "Significant Figures", pos: "n.", zh: "有效數字", def: "反映測量精密度的可靠位數。" }
+    { id: 1, title: "物理量", words: [
+        { en: "Significant Figures", pos: "n.", zh: "有效數字", def: "反映測量精密度的可靠位數。" },
+        { en: "Dimensional Analysis", pos: "n.", zh: "量綱分析", formula: "$$[v] = [L][T]^{-1}$$" }
     ]},
-    { id: 2, title: "Motion Along a Straight Line", words: [
-        { en: "Displacement", pos: "n.", zh: "位移", def: "位置的變量：$\Delta x = x_2 - x_1$。", formula: "$$\Delta x = x_f - x_i$$" },
-        { en: "Instantaneous Velocity", pos: "n.", zh: "瞬時速度", def: "極短時間內的平均速度。", formula: "$$v = \frac{dx}{dt}$$" },
-        { en: "Free-fall Acceleration", pos: "n.", zh: "自由落體加速度", def: "地表附近的重力加速度常數 $g$。", formula: "$$g \approx 9.8 \text{ m/s}^2$$" }
+    { id: 2, title: "運動學", words: [
+        { en: "Instantaneous Velocity", pos: "n.", zh: "瞬時速度", formula: "$$v = \\frac{dx}{dt}$$" },
+        { en: "Centripetal Acceleration", pos: "n.", zh: "向心加速度", formula: "$$a_c = \\frac{v^2}{r}$$" }
     ]},
-    { id: 3, title: "Vectors", words: [
-        { en: "Scalar Product (Dot Product)", pos: "n.", zh: "純量積 (內積)", def: "結果為純量。", formula: "$$\vec{A} \cdot \vec{B} = AB \cos \theta$$" },
-        { en: "Vector Product (Cross Product)", pos: "n.", zh: "向量積 (外積)", def: "結果為向量，方向符合右手定則。", formula: "$$|\vec{A} \times \vec{B}| = AB \sin \theta$$" }
+    { id: 3, title: "靜力平衡", words: [
+        { en: "Torque", pos: "n.", zh: "力矩", formula: "$$\\vec{\\tau} = \\vec{r} \\times \\vec{F}$$" },
+        { en: "Static Equilibrium", pos: "n.", zh: "靜力平衡", formula: "$$\\sum \\vec{F}=0, \\sum \\vec{\\tau}=0$$" }
     ]},
-    { id: 4, title: "Motion in Two and Three Dimensions", words: [
-        { en: "Projectile Motion", pos: "n.", zh: "拋體運動", def: "水平等速與鉛直等加的合成。", formula: "Trajectory: $$y = (\tan \theta_0)x - \frac{gx^2}{2(v_0 \cos \theta_0)^2}$$" },
-        { en: "Centripetal Acceleration", pos: "n.", zh: "向心加速度", def: "指向圓心的加速度。", formula: "$$a = \frac{v^2}{r} = r \omega^2$$" }
+    { id: 4, title: "牛頓運動定律", words: [
+        { en: "Friction", pos: "n.", zh: "摩擦力", formula: "$$f_k = \\mu_k N$$" },
+        { en: "Inertial Reference Frame", pos: "n.", zh: "慣性參考座標系" }
     ]},
-    { id: 5, title: "Force and Motion I", words: [
-        { en: "Newton's Second Law", pos: "n.", zh: "牛頓第二定律", def: "物體受力與加速度的關係。", formula: "$$\sum \vec{F} = m\vec{a}$$" },
-        { en: "Equilibrium", pos: "n.", zh: "平衡", def: "合力為零的狀態。" }
+    { id: 5, title: "功與能", words: [
+        { en: "Work-Kinetic Energy Theorem", pos: "n.", zh: "功能原理", formula: "$$W = \\Delta K$$" },
+        { en: "Conservation of Mechanical Energy", pos: "n.", zh: "力學能守恆定律", formula: "$$K_1+U_1 = K_2+U_2$$" }
     ]},
-    { id: 6, title: "Force and Motion II", words: [
-        { en: "Static Friction", pos: "n.", zh: "靜摩擦力", def: "物體開始移動前的摩擦力。", formula: "$$f_s \leq \mu_s N$$" },
-        { en: "Kinetic Friction", pos: "n.", zh: "動摩擦力", def: "滑動中的摩擦力。", formula: "$$f_k = \mu_k N$$" },
-        { en: "Terminal Speed", pos: "n.", zh: "終端速度", def: "阻力等於重力時的穩定速度。" }
+    { id: 6, title: "衝量與動量", words: [
+        { en: "Impulse", pos: "n.", zh: "衝量", formula: "$$\\vec{J} = \\int \\vec{F} dt = \\Delta \\vec{p}$$" },
+        { en: "Angular Momentum", pos: "n.", zh: "角動量", formula: "$$\\vec{L} = \\vec{r} \\times \\vec{p}$$" }
     ]},
-    { id: 7, title: "Kinetic Energy and Work", words: [
-        { en: "Kinetic Energy", pos: "n.", zh: "動能", def: "由於運動而具有的能量。", formula: "$$K = \frac{1}{2}mv^2$$" },
-        { en: "Work-Kinetic Energy Theorem", pos: "n.", zh: "功能定理", def: "合力對物體作功等於動能的變化量。", formula: "$$W = \Delta K = K_f - K_i$$" }
+    { id: 7, title: "剛體動力學", words: [
+        { en: "Moment of Inertia", pos: "n.", zh: "轉動慣量", formula: "$$I = \\sum m_i r_i^2$$" },
+        { en: "Parallel-Axis Theorem", pos: "n.", zh: "平行軸定理", formula: "$$I = I_{cm} + Mh^2$$" }
     ]},
-    { id: 8, title: "Potential Energy & Energy Conservation", words: [
-        { en: "Conservative Force", pos: "n.", zh: "保守力", def: "作功與路徑無關（如重力、彈力）。" },
-        { en: "Mechanical Energy", pos: "n.", zh: "力學能", def: "動能與位能的總和。", formula: "$$E_{mec} = K + U$$" },
-        { en: "Elastic Potential Energy", pos: "n.", zh: "彈性位能", formula: "$$U_s = \frac{1}{2}kx^2$$" }
+    { id: 8, title: "振盪", words: [
+        { en: "Simple Harmonic Motion", pos: "n.", zh: "簡諧運動", formula: "$$x(t) = A\\cos(\\omega t + \\phi)$$" },
+        { en: "Damped Oscillation", pos: "n.", zh: "阻尼振盪" }
     ]},
-    { id: 9, title: "Center of Mass and Linear Momentum", words: [
-        { en: "Center of Mass (COM)", pos: "n.", zh: "質心", def: "物體質量的平均位置。", formula: "$$x_{com} = \frac{1}{M} \sum m_i x_i$$" },
-        { en: "Impulse", pos: "n.", zh: "衝量", def: "力對時間的累積。", formula: "$$\vec{J} = \int \vec{F} dt = \Delta \vec{p}$$" },
-        { en: "Elastic Collision", pos: "n.", zh: "彈性碰撞", def: "碰撞前後動能守恆。" }
+    { id: 9, title: "重力", words: [
+        { en: "Universal Gravitation", pos: "n.", zh: "萬有引力", formula: "$$F = G\\frac{m_1 m_2}{r^2}$$" },
+        { en: "Kepler's Laws", pos: "n.", zh: "克卜勒行星運動定律" }
     ]},
-    { id: 10, title: "Rotation", words: [
-        { en: "Moment of Inertia", pos: "n.", zh: "轉動慣量", def: "物體抗拒轉動改變的程度。", formula: "$$I = \int r^2 dm$$" },
-        { en: "Parallel-Axis Theorem", pos: "n.", zh: "平行軸定理", def: "求非質心軸的轉動慣量。", formula: "$$I = I_{com} + Mh^2$$" },
-        { en: "Torque", pos: "n.", zh: "力矩", formula: "$$\vec{\tau} = \vec{r} \times \vec{F} = I \alpha$$" }
+    { id: 10, title: "流體力學", words: [
+        { en: "Buoyancy", pos: "n.", zh: "浮力", formula: "$$B = \\rho_{fluid} V_{sub} g$$" },
+        { en: "Bernoulli's Equation", pos: "n.", zh: "伯努利方程式", formula: "$$P + \\frac{1}{2}\\rho v^2 + \\rho gh = \\text{const}$$" }
     ]},
-    { id: 11, title: "Rolling, Torque, & Angular Momentum", words: [
-        { en: "Angular Momentum", pos: "n.", zh: "角動量", def: "旋轉的動量。", formula: "$$\vec{L} = \vec{r} \times \vec{p} = I \omega$$" },
-        { en: "Conservation of Angular Momentum", pos: "n.", zh: "角動量守恆", def: "外力矩為零時角動量不變。" }
+    { id: 11, title: "波動", words: [
+        { en: "Doppler Effect", pos: "n.", zh: "都卜勒效應", formula: "$$f' = f \\frac{v \\pm v_o}{v \\mp v_s}$$" },
+        { en: "Interference", pos: "n.", zh: "干涉" }
     ]},
-    { id: 12, title: "Equilibrium and Elasticity", words: [
-        { en: "Static Equilibrium", pos: "n.", zh: "靜力平衡", def: "物體保持靜止的條件。", formula: "$$\sum \vec{F}=0, \sum \vec{\tau}=0$$" },
-        { en: "Young's Modulus", pos: "n.", zh: "楊氏模數", def: "描述材料抗拉伸的能力。" }
+    { id: 12, title: "溫度與熱量", words: [
+        { en: "Specific Heat", pos: "n.", zh: "比熱", formula: "$$Q = mc\\Delta T$$" },
+        { en: "Thermal Expansion", pos: "n.", zh: "熱膨脹" }
     ]},
-    { id: 13, title: "Gravitation", words: [
-        { en: "Newton's Law of Gravitation", pos: "n.", zh: "萬有引力定律", formula: "$$F = G\frac{m_1 m_2}{r^2}$$" },
-        { en: "Kepler's Laws", pos: "n.", zh: "開普勒定律", def: "描述行星運動的三大規律。" },
-        { en: "Escape Speed", pos: "n.", zh: "脫離速度", formula: "$$v = \sqrt{\frac{2GM}{R}}$$" }
+    { id: 13, title: "熱力學第一定律", words: [
+        { en: "Ideal Gas Law", pos: "n.", zh: "理想氣體性質", formula: "$$PV = nRT$$" },
+        { en: "First Law of Thermodynamics", pos: "n.", zh: "熱力學第一定律", formula: "$$\\Delta E_{int} = Q - W$$" }
     ]},
-    { id: 14, title: "Fluids", words: [
-        { en: "Buoyant Force", pos: "n.", zh: "浮力", def: "流體對物體向上的托力。", formula: "$$F_b = \rho_{fluid} V_{disp} g$$" },
-        { en: "Bernoulli's Equation", pos: "n.", zh: "伯努利方程式", formula: "$$P + \frac{1}{2}\rho v^2 + \rho gh = \text{const}$$" }
+    { id: 14, title: "熵與熱力學第二定律", words: [
+        { en: "Entropy", pos: "n.", zh: "熵", formula: "$$dS = \\frac{dQ_{rev}}{T}$$" },
+        { en: "Carnot Engine", pos: "n.", zh: "卡諾熱機" }
     ]},
-    { id: 15, title: "Oscillations", words: [
-        { en: "Simple Harmonic Motion (SHM)", pos: "n.", zh: "簡諧運動", def: "回復力與位移成正比。", formula: "$$x(t) = A \cos(\omega t + \phi)$$" },
-        { en: "Torsion Pendulum", pos: "n.", zh: "扭擺", formula: "$$T = 2\pi \sqrt{\frac{I}{\kappa}}$$" }
+    { id: 15, title: "電場與電位", words: [
+        { en: "Coulomb's Law", pos: "n.", zh: "庫侖定律", formula: "$$F = k\\frac{|q_1 q_2|}{r^2}$$" },
+        { en: "Gauss's Law", pos: "n.", zh: "電場高斯定律", formula: "$$\\oint \\vec{E} \\cdot d\\vec{A} = \\frac{q_{en}}{\\epsilon_0}$$" }
     ]},
-    { id: 16, title: "Waves I", words: [
-        { en: "Wavelength", pos: "n.", zh: "波長", def: "波重複的最短距離。", formula: "$$v = f \lambda$$" },
-        { en: "Phase Constant", pos: "n.", zh: "初相位", def: "描述波在 $t=0$ 時的狀態。" }
+    { id: 16, title: "直流電路", words: [
+        { en: "Ohm's Law", pos: "n.", zh: "歐姆定律", formula: "$$V = IR$$" },
+        { en: "Electromotive Force (EMF)", pos: "n.", zh: "電動勢" }
     ]},
-    { id: 17, title: "Waves II", words: [
-        { en: "Doppler Effect", pos: "n.", zh: "多普勒效應", def: "波源與觀察者相對運動導致的頻率改變。", formula: "$$f' = f \frac{v \pm v_D}{v \mp v_S}$$" },
-        { en: "Sound Intensity Level", pos: "n.", zh: "分貝/聲強級", formula: "$$\beta = (10 \text{ dB}) \log \frac{I}{I_0}$$" }
+    { id: 17, title: "電容與介電質", words: [
+        { en: "Capacitance", pos: "n.", zh: "電容", formula: "$$C = \\frac{Q}{V}$$" },
+        { en: "Dielectric", pos: "n.", zh: "介電質" }
     ]},
-    { id: 18, title: "Temperature, Heat, & First Law", words: [
-        { en: "Specific Heat", pos: "n.", zh: "比熱", formula: "$$Q = mc \Delta T$$" },
-        { en: "The First Law of Thermodynamics", pos: "n.", zh: "熱力學第一定律", def: "能量守恆於熱力系統。", formula: "$$\Delta E_{int} = Q - W$$" }
+    { id: 18, title: "磁場", words: [
+        { en: "Lorentz Force", pos: "n.", zh: "勞侖茲力", formula: "$$\\vec{F} = q(\\vec{E} + \\vec{v} \\times \\vec{B})$$" },
+        { en: "Magnetic Dipole Moment", pos: "n.", zh: "磁偶極矩" }
     ]},
-    { id: 19, title: "The Kinetic Theory of Gases", words: [
-        { en: "Ideal Gas Law", pos: "n.", zh: "理想氣體定律", formula: "$$PV = nRT$$" },
-        { en: "Root-Mean-Square Speed", pos: "n.", zh: "方均根速率", formula: "$$v_{rms} = \sqrt{\frac{3RT}{M}}$$" },
-        { en: "Adiabatic Process", pos: "n.", zh: "絕熱過程", def: "系統與外界無熱量交換的過程。" }
+    { id: 19, title: "電磁感應", words: [
+        { en: "Faraday's Law", pos: "n.", zh: "法拉第電磁感應定律", formula: "$$\\mathcal{E} = -\\frac{d\\Phi_B}{dt}$$" },
+        { en: "Inductance", pos: "n.", zh: "電感" }
+    ]},
+    { id: 20, title: "交流電路", words: [
+        { en: "Transformer", pos: "n.", zh: "變壓器", formula: "$$\\frac{V_p}{V_s} = \\frac{N_p}{N_s}$$" },
+        { en: "Reactance", pos: "n.", zh: "電抗" }
+    ]},
+    { id: 21, title: "電磁波與物質之磁性", words: [
+        { en: "Maxwell's Equations", pos: "n.", zh: "馬克思威爾方程式", note: "包含高斯定律、法拉第定律等四條方程。" }
+    ]},
+    { id: 22, title: "幾何光學", words: [
+        { en: "Refraction", pos: "n.", zh: "折射", formula: "$$n_1 \\sin \\theta_1 = n_2 \\sin \\theta_2$$" },
+        { en: "Lenses", pos: "n.", zh: "透鏡成像" }
+    ]},
+    { id: 23, title: "波動光學", words: [
+        { en: "Diffraction", pos: "n.", zh: "繞射" },
+        { en: "Interference", pos: "n.", zh: "干涉", note: "如楊氏雙狹縫干涉。" }
+    ]},
+    { id: 24, title: "近代物理簡介", words: [
+        { en: "Special Relativity", pos: "n.", zh: "特殊相對論", formula: "$$E = mc^2$$" },
+        { en: "Photoelectric Effect", pos: "n.", zh: "光電效應", formula: "$$hf = K_{max} + \\Phi$$" },
+        { en: "Uncertainty Principle", pos: "n.", zh: "測不準原理", formula: "$$\\Delta x \\Delta p \\geq \\frac{\\hbar}{2}$$" }
     ]}
 ];
 
@@ -132,4 +143,5 @@ function showMenu() {
 
 // 確保 DOM 載入後執行
 window.onload = init;
+
 
