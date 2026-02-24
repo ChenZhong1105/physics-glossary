@@ -5,7 +5,7 @@ const chapters = [
     ]},
     { id: 1, title: "物理量", words: [
         { en: "Significant Figures", pos: "n.", zh: "有效數字", def: "反映測量精密度的可靠位數。" },
-        { en: "Dimensional Analysis", pos: "n.", zh: "量綱分析", formula: "$$[v] = [L][T]^{-1}$$" }
+        { en: "Dimensional Analysis", pos: "n.", zh: "因次分析", formula: "$$[v] = [L][T]^{-1}$$" }
     ]},
     { id: 2, title: "運動學", words: [
         { en: "Instantaneous Velocity", pos: "n.", zh: "瞬時速度", formula: "$$v = \\frac{dx}{dt}$$" },
@@ -143,5 +143,6 @@ function showMenu() {
 
 // 確保 DOM 載入後執行
 window.onload = init;
+
 
 
