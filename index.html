@@ -3,28 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>普物英文手冊 | Physics Glossary</title>
+    <title>普通物理英文名詞手冊</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="app">
-        <header class="hero">
-            <h1>普通物理專有名詞手冊</h1>
-            <p>EE 轉學考複習資源 · 英翻中 · 公式推導</p>
+    <header class="hero">
+        <h1>普通物理專有名詞</h1>
+        <p>英翻中 · 觀念補充 · 公式推導</p>
+        <div class="btn-container">
             <button onclick="showMenu()" id="back-btn" style="display:none;">回章節選單</button>
-        </header>
+        </div>
+    </header>
 
-        <main class="container">
-            <div id="chapter-menu" class="chapter-grid"></div>
-            
-            <div id="content-area" style="display:none;">
-                <h2 id="chapter-title"></h2>
-                <div id="word-list"></div>
-            </div>
-        </main>
-    </div>
+    <main class="container">
+        <div id="chapter-menu" class="chapter-grid"></div>
+        
+        <div id="content-area" style="display:none;">
+            <h2 id="chapter-title"></h2>
+            <div id="word-list"></div>
+        </div>
+    </main>
 
     <script src="chapters.js"></script>
 </body>
