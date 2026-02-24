@@ -17,7 +17,7 @@ const chapters = [
                 pos: "n.", 
                 zh: "有效數字", 
                 def: "測量值中所有確定的數字加上最後一位估計值。",
-                note: "加減法規則：結果的小數位數須與『小數位數最少者』看齊。 \n乘除法規則：結果的有效位數須與『有效位數最少者』看齊。",
+                note: "加減法規則：結果的小數位數須與『小數位數最少者』看齊。 \\n乘除法規則：結果的有效位數須與『有效位數最少者』看齊。",
                 img: "ch1-p1.jpg" 
             },
             { 
@@ -26,6 +26,7 @@ const chapters = [
                 zh: "因次分析", 
                 def: "利用基本物理量（L, M, T）檢查公式正確性。",
                 formula: "$$[v] = L T^{-1} = \\frac{L}{T}$$",
+                // 這裡使用四個反斜線確保在 HTML 渲染時能剩下兩個給 MathJax 讀取
                 note: "💡 補充規則：指數函數 $e^x$、對數 $\\ln(x)$、三角函數 $\\sin(x)$ 的內部必須為『無因次量』。",
                 img: "ch1-p2.jpg"
             },
@@ -34,14 +35,14 @@ const chapters = [
                 pos: "n.", 
                 zh: "誤差分析", 
                 def: "分析測量值與真實值差異的方法。包含系統誤差與隨機誤差。",
-                note: "誤差傳播規則：",
+                note: "誤差傳播規則 (Error Propagation)：",
                 formula_extra: "$$加減法：\\Delta z = \\sqrt{(\\Delta x)^2 + (\\Delta y)^2} \\\\ 乘除法：\\frac{\\Delta z}{z} = \\sqrt{(\\frac{\\Delta x}{x})^2 + (\\frac{\\Delta y}{y})^2}$$",
                 img: "ch1-p3.jpg" 
             },
             { 
                 en: "Vector Operations", 
                 pos: "n.", 
-                zh: "向量運算 (Dot/Cross Product)", 
+                zh: "向量運算", 
                 formula: "$$\\vec{A} \\cdot \\vec{B} = AB \\cos \\theta \\\\ |\\vec{A} \\times \\vec{B}| = AB \\sin \\theta$$",
                 note: "外積三階行列式計算法：",
                 formula_extra: "$$\\vec{A} \\times \\vec{B} = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ A_x & A_y & A_z \\\\ B_x & B_y & B_z \\end{vmatrix}$$",
@@ -56,8 +57,8 @@ const chapters = [
             { 
                 en: "Kinematics Analysis", 
                 pos: "n.", 
-                zh: "運動分析 (速度與加速度)", 
-                def: "研究物體運動而不考慮受力的學問。",
+                zh: "直線運動分析", 
+                def: "描述位置、速度與加速度隨時間變化的微分關係。",
                 formula: "$$v = \\frac{dx}{dt}, \\quad a = \\frac{dv}{dt} = \\frac{d^2x}{dt^2}$$",
                 img: "ch2-p1.jpg"
             },
@@ -65,9 +66,17 @@ const chapters = [
                 en: "Projectile Motion", 
                 pos: "n.", 
                 zh: "拋體運動", 
-                def: "水平等速運動與鉛直等加速運動的合成。",
+                def: "水平等速運動與鉛直等加速運動的獨立合成。",
                 formula: "$$y = (\\tan\\theta_0)x - \\frac{gx^2}{2(v_0\\cos\\theta_0)^2}$$",
                 img: "ch2-p2.jpg"
+            },
+            { 
+                en: "Relative Motion", 
+                pos: "n.", 
+                zh: "相對運動", 
+                def: "在不同慣性座標系下觀察到的速度關係。",
+                formula: "$$\\vec{v}_{P/A} = \\vec{v}_{P/B} + \\vec{v}_{B/A}$$",
+                img: "ch2-p3.jpg"
             }
         ]
     },
@@ -79,51 +88,66 @@ const chapters = [
                 en: "Torque", 
                 pos: "n.", 
                 zh: "力矩", 
-                def: "力對物體產生轉動效果的物理量。",
+                def: "力對旋轉中心的作用效果。",
                 formula: "$$\\vec{\\tau} = \\vec{r} \\times \\vec{F}$$", 
                 img: "ch3-p1.jpg" 
             },
             { 
-                en: "Static Equilibrium", 
+                en: "Equilibrium Conditions", 
                 pos: "n.", 
-                zh: "靜力平衡", 
-                def: "物體保持靜止且不轉動的狀態。",
+                zh: "平衡條件", 
+                def: "剛體處於平衡時，合力與合力矩皆須為零。",
                 formula: "$$\\sum \\vec{F} = 0, \\quad \\sum \\vec{\\tau} = 0$$",
                 img: "ch3-p2.jpg"
-            },
-            { 
-                en: "Center of Gravity", 
-                pos: "n.", 
-                zh: "重心", 
-                def: "重力的等效作用點。",
-                img: "ch3-p3.jpg"
             }
         ]
     },
-    // 以下章節依此類推預留結構至第 24 章
-    { id: 4, title: "牛頓運動定律 (Newton's Laws)", words: [{ en: "Inertia", pos: "n.", zh: "慣性", img: "ch4-p1.jpg" }] },
+    { 
+        id: 4, 
+        title: "牛頓運動定律 (Newton's Laws of Motion)", 
+        words: [
+            { 
+                en: "Newton's Second Law", 
+                pos: "n.", 
+                zh: "牛頓第二定律", 
+                def: "物體運動狀態的改變與所受合力成正比。",
+                formula: "$$\\sum \\vec{F} = m\\vec{a} = \\frac{d\\vec{p}}{dt}$$",
+                img: "ch4-p1.jpg"
+            },
+            { 
+                en: "Friction", 
+                pos: "n.", 
+                zh: "摩擦力", 
+                def: "接觸面阻礙相對運動的力，分為靜摩擦與動摩擦。",
+                formula: "$$f_s \\leq \\mu_s N, \\quad f_k = \\mu_k N$$",
+                img: "ch4-p2.jpg"
+            }
+        ]
+    },
+    // 其餘 5-24 章節預留結構，檔名統一為 chX-p1.jpg
     { id: 5, title: "功與能 (Work and Energy)", words: [{ en: "Work", pos: "n.", zh: "功", formula: "$$W = \\int \\vec{F} \\cdot d\\vec{s}$$", img: "ch5-p1.jpg" }] },
     { id: 6, title: "衝量與動量 (Impulse and Momentum)", words: [{ en: "Momentum", pos: "n.", zh: "動量", formula: "$$\\vec{p} = m\\vec{v}$$", img: "ch6-p1.jpg" }] },
-    { id: 7, title: "剛體動力學 (Rigid Body Dynamics)", words: [{ en: "Rotation", pos: "n.", zh: "轉動", img: "ch7-p1.jpg" }] },
-    { id: 8, title: "振盪 (Oscillations)", words: [{ en: "SHM", pos: "n.", zh: "簡諧運動", img: "ch8-p1.jpg" }] },
-    { id: 9, title: "重力 (Gravitation)", words: [{ en: "Gravity", pos: "n.", zh: "重力", img: "ch9-p1.jpg" }] },
+    { id: 7, title: "剛體動力學 (Dynamics of Rigid Bodies)", words: [{ en: "Moment of Inertia", pos: "n.", zh: "轉動慣量", formula: "$$I = \\int r^2 dm$$", img: "ch7-p1.jpg" }] },
+    { id: 8, title: "振盪 (Oscillations)", words: [{ en: "SHM", pos: "n.", zh: "簡諧運動", formula: "$$x(t) = A\\cos(\\omega t + \\phi)$$", img: "ch8-p1.jpg" }] },
+    { id: 9, title: "重力 (Gravitation)", words: [{ en: "Gravity", pos: "n.", zh: "萬有引力", formula: "$$F = G\\frac{Mm}{r^2}$$", img: "ch9-p1.jpg" }] },
     { id: 10, title: "流體力學 (Fluid Mechanics)", words: [{ en: "Pressure", pos: "n.", zh: "壓力", img: "ch10-p1.jpg" }] },
-    { id: 11, title: "波動 (Waves)", words: [{ en: "Frequency", pos: "n.", zh: "頻率", img: "ch11-p1.jpg" }] },
-    { id: 12, title: "溫度與熱量 (Heat)", words: [{ en: "Thermodynamics", pos: "n.", zh: "熱力學", img: "ch12-p1.jpg" }] },
-    { id: 13, title: "熱力學第一定律 (First Law)", words: [{ en: "Energy", pos: "n.", zh: "能量", img: "ch13-p1.jpg" }] },
+    { id: 11, title: "波動 (Waves)", words: [{ en: "Wave Equation", pos: "n.", zh: "波動方程", img: "ch11-p1.jpg" }] },
+    { id: 12, title: "溫度與熱量 (Temperature and Heat)", words: [{ en: "Heat Transfer", pos: "n.", zh: "熱傳遞", img: "ch12-p1.jpg" }] },
+    { id: 13, title: "熱力學第一定律 (Thermodynamics I)", words: [{ en: "First Law", pos: "n.", zh: "第一定律", img: "ch13-p1.jpg" }] },
     { id: 14, title: "熵與第二定律 (Entropy)", words: [{ en: "Entropy", pos: "n.", zh: "熵", img: "ch14-p1.jpg" }] },
-    { id: 15, title: "電場與電位 (Electric Field)", words: [{ en: "Charge", pos: "n.", zh: "電荷", img: "ch15-p1.jpg" }] },
-    { id: 16, title: "直流電路 (DC Circuits)", words: [{ en: "Resistance", pos: "n.", zh: "電阻", img: "ch16-p1.jpg" }] },
-    { id: 17, title: "電容與介電質 (Capacitance)", words: [{ en: "Capacitor", pos: "n.", zh: "電容器", img: "ch17-p1.jpg" }] },
-    { id: 18, title: "磁場 (Magnetic Fields)", words: [{ en: "Magnetism", pos: "n.", zh: "磁性", img: "ch18-p1.jpg" }] },
-    { id: 19, title: "電磁感應 (Induction)", words: [{ en: "Faraday", pos: "n.", zh: "法拉第", img: "ch19-p1.jpg" }] },
-    { id: 20, title: "交流電路 (AC Circuits)", words: [{ en: "AC", pos: "n.", zh: "交流電", img: "ch20-p1.jpg" }] },
-    { id: 21, title: "電磁波 (EM Waves)", words: [{ en: "Light", pos: "n.", zh: "光", img: "ch21-p1.jpg" }] },
-    { id: 22, title: "幾何光學 (Optics)", words: [{ en: "Lens", pos: "n.", zh: "透鏡", img: "ch22-p1.jpg" }] },
-    { id: 23, title: "波動光學 (Wave Optics)", words: [{ en: "Diffraction", pos: "n.", zh: "繞射", img: "ch23-p1.jpg" }] },
-    { id: 24, title: "近代物理 (Modern Physics)", words: [{ en: "Quantum", pos: "n.", zh: "量子", img: "ch24-p1.jpg" }] }
+    { id: 15, title: "電場與電位 (Electric Field)", words: [{ en: "Coulomb's Law", pos: "n.", zh: "庫侖定律", img: "ch15-p1.jpg" }] },
+    { id: 16, title: "直流電路 (DC Circuits)", words: [{ en: "Ohm's Law", pos: "n.", zh: "歐姆定律", img: "ch16-p1.jpg" }] },
+    { id: 17, title: "電容與介電質 (Capacitance)", words: [{ en: "Capacitance", pos: "n.", zh: "電容", img: "ch17-p1.jpg" }] },
+    { id: 18, title: "磁場 (Magnetic Fields)", words: [{ en: "Lorentz Force", pos: "n.", zh: "勞侖茲力", img: "ch18-p1.jpg" }] },
+    { id: 19, title: "電磁感應 (Induction)", words: [{ en: "Faraday's Law", pos: "n.", zh: "法拉第定律", img: "ch19-p1.jpg" }] },
+    { id: 20, title: "交流電路 (AC Circuits)", words: [{ en: "Impedance", pos: "n.", zh: "阻抗", img: "ch20-p1.jpg" }] },
+    { id: 21, title: "電磁波與磁性 (EM Waves)", words: [{ en: "Maxwell", pos: "n.", zh: "馬克思威爾", img: "ch21-p1.jpg" }] },
+    { id: 22, title: "幾何光學 (Geometric Optics)", words: [{ en: "Refraction", pos: "n.", zh: "折射", img: "ch22-p1.jpg" }] },
+    { id: 23, title: "波動光學 (Wave Optics)", words: [{ en: "Interference", pos: "n.", zh: "干涉", img: "ch23-p1.jpg" }] },
+    { id: 24, title: "近代物理簡介 (Modern Physics)", words: [{ en: "Photoelectric", pos: "n.", zh: "光電效應", img: "ch24-p1.jpg" }] }
 ];
 
+// --- 核心函數：初始化與渲染 ---
 function init() {
     const menu = document.getElementById('chapter-menu');
     if(!menu) return;
@@ -180,4 +204,3 @@ function showMenu() {
 }
 
 document.addEventListener('DOMContentLoaded', init);
-
