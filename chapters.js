@@ -17,7 +17,7 @@ const chapters = [
                 pos: "n.", 
                 zh: "有效數字", 
                 def: "測量值中所有確定的數字加上最後一位估計值。",
-                note: "加減法規則：結果的小數位數須與『小數位數最少者』看齊。 \\n乘除法規則：結果的有效位數須與『有效位數最少者』看齊。",
+                note: "加減法規則：結果的小數位數須與『小數位數最少者』看齊。 \n乘除法規則：結果的有效位數須與『有效位數最少者』看齊。",
                 img: "ch1-p1.jpg" 
             },
             { 
@@ -26,8 +26,8 @@ const chapters = [
                 zh: "因次分析", 
                 def: "利用基本物理量（L, M, T）檢查公式正確性。",
                 formula: "$$[v] = L T^{-1} = \\frac{L}{T}$$",
-                // 這裡使用四個反斜線確保在 HTML 渲染時能剩下兩個給 MathJax 讀取
-                note: "💡 補充規則：指數函數 $e^x$、對數 $\\ln(x)$、三角函數 $\\sin(x)$ 的內部必須為『無因次量』。",
+                // 改用純文字與 HTML 上標，徹底避開 MathJax 行內解析與 JS 轉義的衝突
+                note: "💡 補充規則：指數函數 e<sup>x</sup>、對數 ln(x)、三角函數 sin(x) 的內部必須為『無因次量』。",
                 img: "ch1-p2.jpg"
             },
             { 
@@ -35,7 +35,7 @@ const chapters = [
                 pos: "n.", 
                 zh: "誤差分析", 
                 def: "分析測量值與真實值差異的方法。包含系統誤差與隨機誤差。",
-                note: "誤差傳播規則 (Error Propagation)：",
+                note: "誤差傳播規則：",
                 formula_extra: "$$加減法：\\Delta z = \\sqrt{(\\Delta x)^2 + (\\Delta y)^2} \\\\ 乘除法：\\frac{\\Delta z}{z} = \\sqrt{(\\frac{\\Delta x}{x})^2 + (\\frac{\\Delta y}{y})^2}$$",
                 img: "ch1-p3.jpg" 
             },
@@ -204,3 +204,4 @@ function showMenu() {
 }
 
 document.addEventListener('DOMContentLoaded', init);
+
