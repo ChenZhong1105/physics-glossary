@@ -203,6 +203,23 @@ const chapters = [
                 def: "⚠️ 僅適用於「加速度 a 為定值」的條件下。", 
                 formula: "$$v = v_0 + at$$ $$\\Delta x = v_0 t + \\frac{1}{2}at^2$$ $$v^2 = v_0^2 + 2a\\Delta x$$", 
                 img: "ch2-p6.jpg" 
+            },
+            {
+                en: "General Curvilinear Motion",
+                pos: "n.",
+                zh: "平面曲線運動 (分量分析)",
+                def: "將位置、速度與加速度分解為水平 (x) 與鉛直 (y) 獨立分量分析。利用單位向量 i, j 表示。",
+                formula: "$$\\vec{r} = x(t)\\hat{i} + y(t)\\hat{j}$$ $$\\vec{v} = v_x\\hat{i} + v_y\\hat{j} = \\frac{dx}{dt}\\hat{i} + \\frac{dy}{dt}\\hat{j}$$ $$\\vec{a} = a_x\\hat{i} + a_y\\hat{j} = \\frac{dv_x}{dt}\\hat{i} + \\frac{dv_y}{dt}\\hat{j}$$",
+                img: "ch2-p7.jpg"
+            },
+            {
+                en: "Projectile Motion",
+                pos: "n.",
+                zh: "拋體運動",
+                def: "僅受重力作用的平面運動。水平方向為等速運動，鉛直方向為重力加速度 (g) 的等加速運動。",
+                note: "💡 軌跡方程式 (Trajectory Equation)：消去時間 t 後可得拋物線方程式。",
+                formula: "$$x(t) = v_{0}\\cos\\theta \\cdot t$$ $$y(t) = v_{0}\\sin\\theta \\cdot t - \\frac{1}{2}gt^2$$ $$y = (\\tan\\theta)x - \\frac{g}{2(v_0\\cos\\theta)^2}x^2$$",
+                img: "ch2-p8.jpg"
             }
         ]
     },
