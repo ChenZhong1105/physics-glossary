@@ -176,7 +176,6 @@ const chapters = [
                 zh: "瞬時加速度", 
                 def: "瞬時速度對時間的一階導數，也是位置對時間的二階導數。",
                 formula: "$$\\vec{a} = \\lim_{\\Delta t \\to 0} \\frac{\\Delta \\vec{v}}{\\Delta t} = \\frac{d\\vec{v}}{dt} = \\frac{d^2\\vec{x}}{dt^2}$$",
-                img: "ch2-p3.jpg"
             },
             { 
                 en: "Algebraic Analysis of Kinematics", 
@@ -185,6 +184,7 @@ const chapters = [
                 def: "位置、速度與加速度三者的微積分轉換。轉學考極常利用連鎖律 (Chain Rule) 將 a 轉換為對 x 的積分。",
                 formula: "$$v = \\frac{dx}{dt}, \\quad a = \\frac{dv}{dt} = v\\frac{dv}{dx}$$",
                 formula_extra: "$$\\Delta v = \\int_{t_1}^{t_2} a \\, dt, \\quad \\Delta x = \\int_{t_1}^{t_2} v \\, dt$$",
+                img: "ch2-p3.jpg"
                 img: "ch2-p4.jpg"
             },
             { 
@@ -641,4 +641,5 @@ window.addEventListener('popstate', (event) => {
 });
 
 document.addEventListener('DOMContentLoaded', init);
+
 
