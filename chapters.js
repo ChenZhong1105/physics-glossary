@@ -398,6 +398,11 @@ for(let i = 3; i <= 24; i++) {
 
 // --- 核心函數：初始化與渲染 ---
 function init() {
+    // 💡 關鍵修復：阻止瀏覽器在重新整理時自動往下滾動
+    if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+    }
+
     const chapterMenu = document.getElementById('chapter-menu');
     const exampleMenu = document.getElementById('example-menu');
     if(!chapterMenu || !exampleMenu) return;
@@ -426,6 +431,9 @@ function init() {
     });
 
     history.replaceState({ page: 'home' }, '', window.location.pathname);
+    
+    // 💡 關鍵修復：確保網頁一載入，畫面強制回到最上方
+    window.scrollTo(0, 0);
 }
 
 function showChapter(id, pushHistory = true) {
@@ -490,6 +498,9 @@ function showMenu(pushHistory = true) {
     document.getElementById('back-btn').style.display = 'none';
     
     if (pushHistory) history.pushState({ page: 'home' }, '', window.location.pathname);
+    
+    // 💡 關鍵修復：確保按返回首頁時，也回到畫面的最上方
+    window.scrollTo(0, 0);
 }
 
 window.addEventListener('popstate', (event) => {
