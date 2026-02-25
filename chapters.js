@@ -150,33 +150,59 @@ const chapters = [
             }
         ]
     },
-    { 
+   { 
         id: 2, 
         title: "運動學 (Kinematics)", 
         words: [
             { 
-                en: "Kinematics Analysis", 
+                en: "Velocity vs. Speed", 
                 pos: "n.", 
-                zh: "直線運動分析", 
-                def: "描述位置、速度與加速度隨時間變化的微分關係。",
-                formula: "$$v = \\frac{dx}{dt}, \\quad a = \\frac{dv}{dt} = \\frac{d^2x}{dt^2}$$",
+                zh: "速度與速率", 
+                def: "速度 (Velocity) 是位移隨時間的變化率，為向量；速率 (Speed) 是路徑長隨時間的變化率，為純量。",
+                note: "💡 重要觀念：|平均速度| ≤ 平均速率。只有在「單向直線運動」且不折返的情況下，兩者才會相等。",
                 img: "ch2-p1.jpg"
             },
             { 
-                en: "Projectile Motion", 
+                en: "Instantaneous Velocity and Speed", 
                 pos: "n.", 
-                zh: "拋體運動", 
-                def: "水平等速運動與鉛直等加速運動的獨立合成。",
-                formula: "$$y = (\\tan\\theta_0)x - \\frac{gx^2}{2(v_0\\cos\\theta_0)^2}$$",
+                zh: "瞬時速度與瞬時速率", 
+                def: "極短時間內的變化率。特別注意：瞬時速率恆等於瞬時速度的「大小」。",
+                formula: "$$\\vec{v} = \\lim_{\\Delta t \\to 0} \\frac{\\Delta \\vec{x}}{\\Delta t} = \\frac{d\\vec{x}}{dt}$$",
                 img: "ch2-p2.jpg"
             },
             { 
-                en: "Relative Motion", 
+                en: "Instantaneous Acceleration", 
                 pos: "n.", 
-                zh: "相對運動", 
-                def: "在不同慣性座標系下觀察到的速度關係。",
-                formula: "$$\\vec{v}_{P/A} = \\vec{v}_{P/B} + \\vec{v}_{B/A}$$",
+                zh: "瞬時加速度", 
+                def: "瞬時速度對時間的一階導數，也是位置對時間的二階導數。",
+                formula: "$$\\vec{a} = \\lim_{\\Delta t \\to 0} \\frac{\\Delta \\vec{v}}{\\Delta t} = \\frac{d\\vec{v}}{dt} = \\frac{d^2\\vec{x}}{dt^2}$$",
                 img: "ch2-p3.jpg"
+            },
+            { 
+                en: "Algebraic Analysis of Kinematics", 
+                pos: "n.", 
+                zh: "運動學代數分析法 (微積分關係)", 
+                def: "位置、速度與加速度三者的微積分轉換。轉學考極常利用連鎖律 (Chain Rule) 將 a 轉換為對 x 的積分。",
+                formula: "$$v = \\frac{dx}{dt}, \\quad a = \\frac{dv}{dt} = v\\frac{dv}{dx}$$",
+                formula_extra: "$$\\Delta v = \\int_{t_1}^{t_2} a \\, dt, \\quad \\Delta x = \\int_{t_1}^{t_2} v \\, dt$$",
+                img: "ch2-p4.jpg"
+            },
+            { 
+                en: "Graphical Analysis", 
+                pos: "n.", 
+                zh: "直線運動圖形分析", 
+                def: "透過位置(x)、速度(v)、加速度(a)對時間(t)的關係圖解題。",
+                note: "📐 切線斜率意涵：\nx-t 圖的切線斜率 = 瞬時速度 (v)。\nv-t 圖的切線斜率 = 瞬時加速度 (a)。\n\n🟦 面積意涵：\nv-t 圖下的面積 = 位移 (Δx)。\na-t 圖下的面積 = 速度變化量 (Δv)。",
+                img: "ch2-p5.jpg"
+            },
+            { 
+                en: "Equations of Kinematics", 
+                pos: "n.", 
+                zh: "等加速度直線運動三大公式", 
+                def: "⚠️ 僅適用於「加速度 a 為定值」的條件下。",
+                formula: "$$v = v_0 + at$$",
+                formula_extra: "$$\\Delta x = v_0 t + \\frac{1}{2}at^2 \\\\ v^2 = v_0^2 + 2a\\Delta x$$",
+                img: "ch2-p6.jpg"
             }
         ]
     },
@@ -554,5 +580,6 @@ window.addEventListener('popstate', (event) => {
 });
 
 document.addEventListener('DOMContentLoaded', init);
+
 
 
