@@ -585,7 +585,9 @@ function showChapter(id, pushHistory = true) {
             ${w.formula ? `<div class="formula">${w.formula}</div>` : ''}
             ${w.note ? `<p style="color:#666; font-size:0.9em;">${w.note}</p>` : ''}
             ${w.formula_extra ? `<div class="formula">${w.formula_extra}</div>` : ''}
-            ${w.img ? `<div style="margin: 15px 0 10px 0; text-align: center;"><img src="${w.img}" alt="推導照片" style="max-width:100%; border-radius:8px; border:1px solid #ddd;" onerror="this.style.display='none'"></div>` : ''}
+            ${w.img ? `<div style="margin: 15px 0 10px 0; text-align: center;"><img src="${w.img}" alt="推導照片1" style="max-width:100%; border-radius:8px; border:1px solid #ddd;" onerror="this.style.display='none'"></div>` : ''}
+            ${w.img2 ? `<div style="margin: 15px 0 10px 0; text-align: center;"><img src="${w.img2}" alt="推導照片2" style="max-width:100%; border-radius:8px; border:1px solid #ddd;" onerror="this.style.display='none'"></div>` : ''}
+            ${w.img3 ? `<div style="margin: 15px 0 10px 0; text-align: center;"><img src="${w.img3}" alt="推導照片3" style="max-width:100%; border-radius:8px; border:1px solid #ddd;" onerror="this.style.display='none'"></div>` : ''}
         </div>
     `).join('');
     
@@ -641,6 +643,7 @@ window.addEventListener('popstate', (event) => {
 });
 
 document.addEventListener('DOMContentLoaded', init);
+
 
 
 
