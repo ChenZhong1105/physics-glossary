@@ -199,7 +199,7 @@ const chapters = [
                 en: "Equations of Kinematics", 
                 pos: "n.", 
                 zh: "等加速度直線運動三大公式", 
-                def: "⚠️ 僅適用於「加速度 a 為定值」的條件下。",
+                def: "僅適用於「等加速度」的條件下。",
                 // 直接拆成三個獨立的 $$ 區塊，確保換行完美且置中
                 formula: "$$v = v_0 + at$$ $$\\Delta x = v_0 t + \\frac{1}{2}at^2$$ $$v^2 = v_0^2 + 2a\\Delta x$$",
                 img: "ch2-p6.jpg"
@@ -641,5 +641,6 @@ window.addEventListener('popstate', (event) => {
 });
 
 document.addEventListener('DOMContentLoaded', init);
+
 
 
