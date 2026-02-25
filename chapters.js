@@ -471,7 +471,7 @@ const chapters = [
     }
 ];
 
-// --- 核心函數：初始化與渲染 ---
+// --- 核心函數：初始化與渲染 (已加入瀏覽器「上一頁」支援) ---
 function init() {
     const menu = document.getElementById('chapter-menu');
     if(!menu) return;
@@ -490,9 +490,13 @@ function init() {
         card.onclick = () => showChapter(ch.id);
         menu.appendChild(card);
     });
+
+    // 網頁剛載入時，記錄「首頁」狀態
+    history.replaceState({ page: 'home' }, '', window.location.pathname);
 }
 
-function showChapter(id) {
+// 加入 pushHistory 參數，控制是否要新增歷史紀錄
+function showChapter(id, pushHistory = true) {
     const ch = chapters.find(c => c.id === id);
     document.getElementById('chapter-menu').style.display = 'none';
     document.getElementById('content-area').style.display = 'block';
@@ -519,13 +523,35 @@ function showChapter(id) {
     if(window.MathJax) {
         MathJax.typeset();
     }
+
+    // 點進章節時，告訴瀏覽器「這是一頁新的紀錄」
+    if (pushHistory) {
+        history.pushState({ page: 'chapter', id: id }, '', `#chapter-${id}`);
+    }
 }
 
-function showMenu() {
+// 加入 pushHistory 參數
+function showMenu(pushHistory = true) {
     document.getElementById('chapter-menu').style.display = 'grid';
     document.getElementById('content-area').style.display = 'none';
     document.getElementById('back-btn').style.display = 'none';
+    
+    // 點擊網頁上的「返回按鈕」時，也推入首頁的紀錄
+    if (pushHistory) {
+        history.pushState({ page: 'home' }, '', window.location.pathname);
+    }
 }
+
+// 關鍵！監聽手機或瀏覽器的實體「上一頁」與「下一頁」動作
+window.addEventListener('popstate', (event) => {
+    if (event.state && event.state.page === 'chapter') {
+        // 如果歷史紀錄是章節，就顯示章節（且不再推入新紀錄）
+        showChapter(event.state.id, false);
+    } else {
+        // 否則退回首頁選單
+        showMenu(false);
+    }
+});
 
 document.addEventListener('DOMContentLoaded', init);
 
