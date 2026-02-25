@@ -127,3 +127,54 @@ body {
     z-index: 1000;
     pointer-events: none;
 }
+
+/* --- 首頁區塊標題 --- */
+.section-title {
+    color: #2c3e50;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 8px;
+    margin-bottom: 20px;
+    font-size: 1.4em;
+    font-weight: bold;
+}
+
+/* --- 例題章節卡片 (首頁) --- */
+.example-card {
+    background: #fffaf0; 
+    border: 1px solid #f39c12;
+    padding: 25px 10px;
+    border-radius: 12px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100px;
+}
+.example-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(243, 156, 18, 0.2);
+    background-color: #fef5e7;
+}
+.example-card strong { color: #d35400; }
+
+/* --- 具體例題卡片 (內頁) --- */
+.problem-card {
+    background: white;
+    margin: 20px auto;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    border-left: 6px solid #e67e22; /* 橘色左邊框標記 */
+    max-width: 750px;
+    text-align: left;
+}
+.problem-header {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #d35400;
+    margin-bottom: 10px;
+    border-bottom: 1px dashed #eee;
+    padding-bottom: 10px;
+}
