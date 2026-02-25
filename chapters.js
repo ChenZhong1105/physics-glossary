@@ -370,10 +370,11 @@ const examples = [
         title: "物理量 (Physical Quantities)",
         problems: [
             {
-                title: "例題 1：外積與面積",
+                title: "題型：外積與面積",
                 desc: "若空間中兩向量為 $\\vec{A} = 2\\hat{i} + \\hat{j} - \\hat{k}$ 與 $\\vec{B} = \\hat{i} - \\hat{j} + 2\\hat{k}$，求兩向量所張成之平行四邊形面積。",
+                q_img: "", // ⬅️ 如果題目本身是截圖，填入檔名，例如 "ex1-1-q.jpg"
                 ans: "面積 $= |\\vec{A} \\times \\vec{B}|$，計算結果為 $\\sqrt{35}$",
-                img: "ex1-1.jpg"
+                ans_img: "ex1-1-ans.jpg" // ⬅️ 這裡放計算過程的詳解圖片
             }
         ]
     },
@@ -382,10 +383,11 @@ const examples = [
         title: "運動學 (Kinematics)",
         problems: [
             {
-                title: "例題 1：微積分連鎖律應用",
+                title: "題型：微積分連鎖律應用",
                 desc: "已知質點加速度與位置的關係為 $a = -4x$，且當 $x=0$ 時速度 $v=10$。求物體運動到 $x=2$ 時的速度大小？",
+                q_img: "", 
                 ans: "利用 $a = v\\frac{dv}{dx}$ 積分， $\\int_{10}^{v} v' dv' = \\int_{0}^{2} -4x dx$，解得 $v = \\sqrt{84}$",
-                img: "ex2-1.jpg"
+                ans_img: "ex2-1-ans.jpg"
             }
         ]
     }
