@@ -219,7 +219,8 @@ const chapters = [
                 def: "僅受重力作用的平面運動。水平方向為等速運動，鉛直方向為重力加速度 (g) 的等加速運動。",
                 note: "💡 軌跡方程式 (Trajectory Equation)：消去時間 t 後可得拋物線方程式。",
                 formula: "$$x(t) = v_{0}\\cos\\theta \\cdot t$$ $$y(t) = v_{0}\\sin\\theta \\cdot t - \\frac{1}{2}gt^2$$ $$y = (\\tan\\theta)x - \\frac{g}{2(v_0\\cos\\theta)^2}x^2$$",
-                img: "ch2-p8.jpg"
+                img: "ch2-p8.jpg",
+                img2: "ch2-p8-2.jpg"
             }
         ]
     },
