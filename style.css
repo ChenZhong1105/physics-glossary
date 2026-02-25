@@ -178,3 +178,19 @@ body {
     border-bottom: 1px dashed #eee;
     padding-bottom: 10px;
 }
+/* --- 顯示/隱藏答案按鈕 --- */
+.toggle-btn {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.95em;
+    margin-top: 15px;
+    transition: 0.3s;
+    font-weight: bold;
+}
+.toggle-btn:hover { background-color: #2980b9; }
+.toggle-btn.active { background-color: #e74c3c; } /* 展開時變成紅色 */
+.toggle-btn.active:hover { background-color: #c0392b; }
