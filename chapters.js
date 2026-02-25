@@ -474,6 +474,7 @@ function showChapter(id, pushHistory = true) {
     if (pushHistory) history.pushState({ page: 'chapter', id: id }, '', `#chapter-${id}`);
 }
 
+// --- 替換從這裡開始 ---
 function showExample(id, pushHistory = true) {
     const ex = examples.find(e => e.id === id);
     document.getElementById('home-area').style.display = 'none';
@@ -486,12 +487,19 @@ function showExample(id, pushHistory = true) {
     if(!ex.problems || ex.problems.length === 0) {
         list.innerHTML = `<p style="text-align:center; color:#7f8c8d; margin-top:30px; font-size:1.1em;">🚧 尚無例題，持續更新中...</p>`;
     } else {
-        list.innerHTML = ex.problems.map(p => `
+        list.innerHTML = ex.problems.map((p, index) => `
             <div class="problem-card">
                 <div class="problem-header">${p.title}</div>
-                <p><strong>題目：</strong>${p.desc}</p>
-                ${p.ans ? `<div class="formula"><strong>思路：</strong><br>${p.ans}</div>` : ''}
-                ${p.img ? `<div style="margin: 15px 0 10px 0; text-align: center;"><img src="${p.img}" alt="例題解答" style="max-width:100%; border-radius:8px; border:1px solid #ddd;" onerror="this.style.display='none'"></div>` : ''}
+                
+                ${p.desc ? `<p><strong>題目：</strong>${p.desc}</p>` : ''}
+                ${p.q_img ? `<div style="margin: 10px 0; text-align: center;"><img src="${p.q_img}" alt="題目圖片" style="max-width:100%; border-radius:8px; border:1px solid #ddd;" onerror="this.style.display='none'"></div>` : ''}
+                
+                <button id="btn-${index}" class="toggle-btn" onclick="toggleAnswer(${index})">顯示答案</button>
+
+                <div id="ans-${index}" style="display: none; margin-top: 15px; padding-top: 15px; border-top: 1px dashed #ccc;">
+                    ${p.ans ? `<div class="formula"><strong>思路與解答：</strong><br>${p.ans}</div>` : ''}
+                    ${p.ans_img ? `<div style="margin: 15px 0 10px 0; text-align: center;"><img src="${p.ans_img}" alt="詳解照片" style="max-width:100%; border-radius:8px; border:1px solid #ddd;" onerror="this.style.display='none'"></div>` : ''}
+                </div>
             </div>
         `).join('');
     }
@@ -500,6 +508,23 @@ function showExample(id, pushHistory = true) {
     if(window.MathJax) MathJax.typeset();
     if (pushHistory) history.pushState({ page: 'example', id: id }, '', `#example-${id}`);
 }
+
+// 🌟 新增：用來切換答案顯示/隱藏的魔法函數
+window.toggleAnswer = function(index) {
+    const ansDiv = document.getElementById(`ans-${index}`);
+    const btn = document.getElementById(`btn-${index}`);
+    
+    if (ansDiv.style.display === 'none') {
+        ansDiv.style.display = 'block'; // 顯示答案
+        btn.innerText = '隱藏答案';     // 更改按鈕文字
+        btn.classList.add('active');    // 加入 CSS active 類別（變紅色）
+    } else {
+        ansDiv.style.display = 'none';  // 隱藏答案
+        btn.innerText = '顯示答案';     // 恢復按鈕文字
+        btn.classList.remove('active'); // 移除 CSS active 類別（變回藍色）
+    }
+};
+// --- 替換到這裡結束 ---
 
 function showMenu(pushHistory = true) {
     document.getElementById('home-area').style.display = 'block';
