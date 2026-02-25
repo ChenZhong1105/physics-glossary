@@ -397,27 +397,35 @@ for(let i = 3; i <= 24; i++) {
 }
 
 // --- 核心函數：初始化與渲染 ---
+// --- 核心函數：初始化與渲染 ---
 function init() {
-    // 💡 關鍵修復：阻止瀏覽器在重新整理時自動往下滾動
     if ('scrollRestoration' in history) {
         history.scrollRestoration = 'manual';
     }
 
+    const chapter0Menu = document.getElementById('chapter-0-menu');
     const chapterMenu = document.getElementById('chapter-menu');
     const exampleMenu = document.getElementById('example-menu');
-    if(!chapterMenu || !exampleMenu) return;
+    if(!chapterMenu || !exampleMenu || !chapter0Menu) return;
     
+    chapter0Menu.innerHTML = '';
     chapterMenu.innerHTML = '';
     exampleMenu.innerHTML = '';
 
-    // 渲染單字清單
+    // 渲染單字清單 (自動將第 0 章分流)
     chapters.forEach(ch => {
         const card = document.createElement('div');
         card.className = 'chapter-card';
         const titleParts = ch.title.split(' (');
         card.innerHTML = `<strong>第 ${ch.id} 章</strong><br><div style="font-size: 1.1em; margin-top: 5px;">${titleParts[0]}</div>`;
         card.onclick = () => showChapter(ch.id);
-        chapterMenu.appendChild(card);
+        
+        // 分流邏輯：id 是 0 的丟進專屬區塊，其他的丟進原本區塊
+        if (ch.id === 0) {
+            chapter0Menu.appendChild(card);
+        } else {
+            chapterMenu.appendChild(card);
+        }
     });
 
     // 渲染例題清單
@@ -431,8 +439,6 @@ function init() {
     });
 
     history.replaceState({ page: 'home' }, '', window.location.pathname);
-    
-    // 💡 關鍵修復：確保網頁一載入，畫面強制回到最上方
     window.scrollTo(0, 0);
 }
 
