@@ -4,38 +4,180 @@ const chapters = [
         id: 0, 
         title: "基本常識 (Basic Knowledge)", 
         words: [
-            { en: "Negligible", pos: "adj.", zh: "可忽略的", def: "數值極小而不影響計算結果。", note: "常用於忽略空氣阻力或摩擦力。", img: "ch0-p1.jpg" },
-            { en: "Uniform", pos: "adj.", zh: "均勻的/一致的", def: "物理量不隨空間或時間改變。", note: "例如：等速率圓周運動 (Uniform Circular Motion)", img: "ch0-p2.jpg" },
-            { en: "Perpendicular", pos: "adj.", zh: "垂直的 / 正交的", def: "兩直線或向量相交成直角（90度）。", formula: "$$\\vec{A} \\cdot \\vec{B} = 0$$", img: "ch0-p3.jpg" },
-            { en: "Magnitude", pos: "n.", zh: "量值 / 大小", def: "物理量的純數值部分，不包含方向。", formula: "$$|\\vec{A}| = \\sqrt{A_x^2 + A_y^2 + A_z^2}$$", img: "ch0-p4.jpg" },
-            { en: "Order of Magnitude", pos: "n.", zh: "數量級", def: "以 10 的次方來表示數值的大致範圍，常用於快速估算。", img: "ch0-p5.jpg" },
-            { en: "Quantum", pos: "n.", zh: "量子", def: "物理量不可分割的最小基本單位。", img: "ch0-p6.jpg" },
-            { en: "Electron", pos: "n.", zh: "電子", def: "帶有基本負電荷的亞原子粒子。", formula: "$$e \\approx 1.602 \\times 10^{-19} \\text{ C}$$", img: "ch0-p7.jpg" },
-            { en: "Planck's Constant", pos: "n.", zh: "普朗克常數", def: "量子力學中的基本常數，描述量子的大小。", formula: "$$h \\approx 6.626 \\times 10^{-34} \\text{ J}\\cdot\\text{s}$$", img: "ch0-p8.jpg" },
-            { en: "Density", pos: "n.", zh: "密度", def: "單位體積內所含的質量。", formula: "$$\\rho = \\frac{m}{V}$$", img: "ch0-p9.jpg" }
+            { 
+                en: "Negligible", 
+                pos: "adj.", 
+                zh: "可忽略的", 
+                def: "數值極小而不影響計算結果。", 
+                note: "常用於忽略空氣阻力或摩擦力。", 
+                img: "ch0-p1.jpg" 
+            },
+            { 
+                en: "Uniform", 
+                pos: "adj.", 
+                zh: "均勻的/一致的", 
+                def: "物理量不隨空間或時間改變。", 
+                note: "例如：等速率圓周運動 (Uniform Circular Motion)", 
+                img: "ch0-p2.jpg" 
+            },
+            { 
+                en: "Perpendicular", 
+                pos: "adj.", 
+                zh: "垂直的 / 正交的", 
+                def: "兩直線或向量相交成直角（90度）。", 
+                formula: "$$\\vec{A} \\cdot \\vec{B} = 0$$", 
+                img: "ch0-p3.jpg" 
+            },
+            { 
+                en: "Magnitude", 
+                pos: "n.", 
+                zh: "量值 / 大小", 
+                def: "物理量的純數值部分，不包含方向。", 
+                formula: "$$|\\vec{A}| = \\sqrt{A_x^2 + A_y^2 + A_z^2}$$", 
+                img: "ch0-p4.jpg" 
+            },
+            { 
+                en: "Order of Magnitude", 
+                pos: "n.", 
+                zh: "數量級", 
+                def: "以 10 的次方來表示數值的大致範圍，常用於快速估算。", 
+                img: "ch0-p5.jpg" 
+            },
+            { 
+                en: "Quantum", 
+                pos: "n.", 
+                zh: "量子", 
+                def: "物理量不可分割的最小基本單位。", 
+                img: "ch0-p6.jpg" 
+            },
+            { 
+                en: "Electron", 
+                pos: "n.", 
+                zh: "電子", 
+                def: "帶有基本負電荷的亞原子粒子。", 
+                formula: "$$e \\approx 1.602 \\times 10^{-19} \\text{ C}$$", 
+                img: "ch0-p7.jpg" 
+            },
+            { 
+                en: "Planck's Constant", 
+                pos: "n.", 
+                zh: "普朗克常數", 
+                def: "量子力學中的基本常數，描述量子的大小。", 
+                formula: "$$h \\approx 6.626 \\times 10^{-34} \\text{ J}\\cdot\\text{s}$$", 
+                img: "ch0-p8.jpg" 
+            },
+            { 
+                en: "Density", 
+                pos: "n.", 
+                zh: "密度", 
+                def: "單位體積內所含的質量。", 
+                formula: "$$\\rho = \\frac{m}{V}$$", 
+                img: "ch0-p9.jpg" 
+            }
         ]
     },
     { 
         id: 1, 
         title: "物理量 (Physical Quantities)", 
         words: [
-            { en: "Significant Figures", pos: "n.", zh: "有效數字", def: "測量值中所有確定的數字加上最後一位估計值。", note: "加減法規則：結果的小數位數須與『小數位數最少者』看齊。 \n乘除法規則：結果的有效位數須與『有效位數最少者』看齊。", img: "ch1-p1.jpg" },
-            { en: "Dimensional Analysis", pos: "n.", zh: "因次分析", def: "利用基本物理量（L, M, T）檢查公式正確性。", formula: "$$[v] = L T^{-1} = \\frac{L}{T}$$", note: "💡 補充規則：指數函數 e<sup>x</sup>、對數 ln(x)、三角函數 sin(x) 的內部必須為『無因次量』。", img: "ch1-p2.jpg" },
-            { en: "Error Analysis", pos: "n.", zh: "誤差分析", def: "分析測量值與真實值差異的方法。包含系統誤差與隨機誤差。", note: "誤差傳播規則：", formula_extra: "$$加減法：\\Delta z = \\sqrt{(\\Delta x)^2 + (\\Delta y)^2} \\\\ 乘除法：\\frac{\\Delta z}{z} = \\sqrt{(\\frac{\\Delta x}{x})^2 + (\\frac{\\Delta y}{y})^2}$$", img: "ch1-p3.jpg" },
-            { en: "Unit Vector", pos: "n.", zh: "單位向量", def: "長度（大小）為 1 的向量，專門用來標示方向。", formula: "$$\\hat{e}_{\\vec{u}} = \\frac{\\vec{u}}{|\\vec{u}|}$$", img: "ch1-p4.jpg" },
-            { en: "Dot Product", pos: "n.", zh: "內積 (純量積)", def: "兩向量的內積結果為純量（數值）。", formula: "$$\\vec{A} \\cdot \\vec{B} = AB \\cos \\theta = A_x B_x + A_y B_y + A_z B_z$$", img: "ch1-p5.jpg" },
-            { en: "Scalar Projection", pos: "n.", zh: "正射影長 (純量投影)", def: "向量 A 在向量 B 方向上的投影長度。計算方式為 A 向量與 B 的單位向量做內積。", formula: "$$\\text{comp}_{\\vec{B}}\\vec{A} = \\vec{A} \\cdot \\hat{e}_{\\vec{B}} = \\frac{\\vec{A} \\cdot \\vec{B}}{|\\vec{B}|}$$", img: "ch1-p6.jpg" },
-            { en: "Orthogonal Projection", pos: "n.", zh: "正射影 (向量投影)", def: "向量 A 在向量 B 方向上的投影向量。等於「正射影長」再乘上「B 的單位向量」。", formula: "$$\\text{Proj}_{\\vec{B}}\\vec{A} = (\\vec{A} \\cdot \\hat{e}_{\\vec{B}})\\hat{e}_{\\vec{B}} = \\left(\\frac{\\vec{A} \\cdot \\vec{B}}{|\\vec{B}|^2}\\right)\\vec{B}$$", img: "ch1-p7.jpg" },
-            { en: "Cross Product", pos: "n.", zh: "外積 (向量積)", def: "兩向量的外積結果為向量，方向符合右手定則。量值等於兩向量構成之平行四邊形面積。", formula: "$$|\\vec{A} \\times \\vec{B}| = AB \\sin \\theta$$", note: "外積三階行列式計算法：", formula_extra: "$$\\vec{A} \\times \\vec{B} = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ A_x & A_y & A_z \\\\ B_x & B_y & B_z \\end{vmatrix}$$", img: "ch1-p8.jpg" }
+            { 
+                en: "Significant Figures", 
+                pos: "n.", 
+                zh: "有效數字", 
+                def: "測量值中所有確定的數字加上最後一位估計值。", 
+                note: "加減法規則：結果的小數位數須與『小數位數最少者』看齊。 \n乘除法規則：結果的有效位數須與『有效位數最少者』看齊。", 
+                img: "ch1-p1.jpg" 
+            },
+            { 
+                en: "Dimensional Analysis", 
+                pos: "n.", 
+                zh: "因次分析", 
+                def: "利用基本物理量（L, M, T）檢查公式正確性。", 
+                formula: "$$[v] = L T^{-1} = \\frac{L}{T}$$", 
+                note: "💡 補充規則：指數函數 e<sup>x</sup>、對數 ln(x)、三角函數 sin(x) 的內部必須為『無因次量』。", 
+                img: "ch1-p2.jpg" 
+            },
+            { 
+                en: "Error Analysis", 
+                pos: "n.", 
+                zh: "誤差分析", 
+                def: "分析測量值與真實值差異的方法。包含系統誤差與隨機誤差。", 
+                note: "誤差傳播規則：", 
+                formula_extra: "$$加減法：\\Delta z = \\sqrt{(\\Delta x)^2 + (\\Delta y)^2} \\\\ 乘除法：\\frac{\\Delta z}{z} = \\sqrt{(\\frac{\\Delta x}{x})^2 + (\\frac{\\Delta y}{y})^2}$$", 
+                img: "ch1-p3.jpg" 
+            },
+            { 
+                en: "Unit Vector", 
+                pos: "n.", 
+                zh: "單位向量", 
+                def: "長度（大小）為 1 的向量，專門用來標示方向。", 
+                formula: "$$\\hat{e}_{\\vec{u}} = \\frac{\\vec{u}}{|\\vec{u}|}$$", 
+                img: "ch1-p4.jpg" 
+            },
+            { 
+                en: "Dot Product", 
+                pos: "n.", 
+                zh: "內積 (純量積)", 
+                def: "兩向量的內積結果為純量（數值）。", 
+                formula: "$$\\vec{A} \\cdot \\vec{B} = AB \\cos \\theta = A_x B_x + A_y B_y + A_z B_z$$", 
+                img: "ch1-p5.jpg" 
+            },
+            { 
+                en: "Scalar Projection", 
+                pos: "n.", 
+                zh: "正射影長 (純量投影)", 
+                def: "向量 A 在向量 B 方向上的投影長度。計算方式為 A 向量與 B 的單位向量做內積。", 
+                formula: "$$\\text{comp}_{\\vec{B}}\\vec{A} = \\vec{A} \\cdot \\hat{e}_{\\vec{B}} = \\frac{\\vec{A} \\cdot \\vec{B}}{|\\vec{B}|}$$", 
+                img: "ch1-p6.jpg" 
+            },
+            { 
+                en: "Orthogonal Projection", 
+                pos: "n.", 
+                zh: "正射影 (向量投影)", 
+                def: "向量 A 在向量 B 方向上的投影向量。等於「正射影長」再乘上「B 的單位向量」。", 
+                formula: "$$\\text{Proj}_{\\vec{B}}\\vec{A} = (\\vec{A} \\cdot \\hat{e}_{\\vec{B}})\\hat{e}_{\\vec{B}} = \\left(\\frac{\\vec{A} \\cdot \\vec{B}}{|\\vec{B}|^2}\\right)\\vec{B}$$", 
+                img: "ch1-p7.jpg" 
+            },
+            { 
+                en: "Cross Product", 
+                pos: "n.", 
+                zh: "外積 (向量積)", 
+                def: "兩向量的外積結果為向量，方向符合右手定則。量值等於兩向量構成之平行四邊形面積。", 
+                formula: "$$|\\vec{A} \\times \\vec{B}| = AB \\sin \\theta$$", 
+                note: "外積三階行列式計算法：", 
+                formula_extra: "$$\\vec{A} \\times \\vec{B} = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ A_x & A_y & A_z \\\\ B_x & B_y & B_z \\end{vmatrix}$$", 
+                img: "ch1-p8.jpg" 
+            }
         ]
     },
     { 
         id: 2, 
         title: "運動學 (Kinematics)", 
         words: [
-            { en: "Velocity vs. Speed", pos: "n.", zh: "速度與速率", def: "速度 (Velocity) 是位移隨時間的變化率，為向量；速率 (Speed) 是路徑長隨時間的變化率，為純量。", note: "💡 重要觀念：|平均速度| ≤ 平均速率。只有在「單向直線運動」且不折返的情況下，兩者才會相等。", img: "ch2-p1.jpg" },
-            { en: "Instantaneous Velocity and Speed", pos: "n.", zh: "瞬時速度與瞬時速率", def: "極短時間內的變化率。特別注意：瞬時速率恆等於瞬時速度的「大小」。", formula: "$$\\vec{v} = \\lim_{\\Delta t \\to 0} \\frac{\\Delta \\vec{x}}{\\Delta t} = \\frac{d\\vec{x}}{dt}$$", img: "ch2-p2.jpg" },
-            { en: "Instantaneous Acceleration", pos: "n.", zh: "瞬時加速度", def: "瞬時速度對時間的一階導數，也是位置對時間的二階導數。", formula: "$$\\vec{a} = \\lim_{\\Delta t \\to 0} \\frac{\\Delta \\vec{v}}{\\Delta t} = \\frac{d\\vec{v}}{dt} = \\frac{d^2\\vec{x}}{dt^2}$$", img: "ch2-p3.jpg" },
+            { 
+                en: "Velocity vs. Speed", 
+                pos: "n.", 
+                zh: "速度與速率", 
+                def: "速度 (Velocity) 是位移隨時間的變化率，為向量；速率 (Speed) 是路徑長隨時間的變化率，為純量。", 
+                note: "💡 重要觀念：|平均速度| ≤ 平均速率。只有在「單向直線運動」且不折返的情況下，兩者才會相等。", 
+                img: "ch2-p1.jpg" 
+            },
+            { 
+                en: "Instantaneous Velocity and Speed", 
+                pos: "n.", 
+                zh: "瞬時速度與瞬時速率", 
+                def: "極短時間內的變化率。特別注意：瞬時速率恆等於瞬時速度的「大小」。", 
+                formula: "$$\\vec{v} = \\lim_{\\Delta t \\to 0} \\frac{\\Delta \\vec{x}}{\\Delta t} = \\frac{d\\vec{x}}{dt}$$", 
+                img: "ch2-p2.jpg" 
+            },
+            { 
+                en: "Instantaneous Acceleration", 
+                pos: "n.", 
+                zh: "瞬時加速度", 
+                def: "瞬時速度對時間的一階導數，也是位置對時間的二階導數。", 
+                formula: "$$\\vec{a} = \\lim_{\\Delta t \\to 0} \\frac{\\Delta \\vec{v}}{\\Delta t} = \\frac{d\\vec{v}}{dt} = \\frac{d^2\\vec{x}}{dt^2}$$", 
+                img: "ch2-p3.jpg" 
+            },
             { 
                 en: "Algebraic Analysis of Kinematics", 
                 pos: "n.", 
@@ -43,15 +185,67 @@ const chapters = [
                 def: "位置、速度與加速度三者的微積分轉換。轉學考極常利用連鎖律 (Chain Rule) 將 a 轉換為對 x 的積分。", 
                 formula: "$$v = \\frac{dx}{dt}, \\quad a = \\frac{dv}{dt} = v\\frac{dv}{dx}$$", 
                 formula_extra: "$$\\Delta v = \\int_{t_1}^{t_2} a \\, dt, \\quad \\Delta x = \\int_{t_1}^{t_2} v \\, dt$$", 
-                img: "ch2-p4.jpg", // 注意：這裡有逗號
-                img2: "ch2-p4-2.jpg" // 你可以放第二張照片，檔名可以自己改
+                img: "ch2-p4.jpg", 
+                img2: "ch2-p4-2.jpg" 
             },
-            { en: "Graphical Analysis", pos: "n.", zh: "直線運動圖形分析", def: "透過位置(x)、速度(v)、加速度(a)對時間(t)的關係圖解題。", note: "📐 切線斜率意涵：<br>x-t 圖的切線斜率 = 瞬時速度 (v) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; v-t 圖的切線斜率 = 瞬時加速度 (a)<br><br>🟦 面積意涵：<br>v-t 圖下的面積 = 位移 (Δx) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a-t 圖下的面積 = 速度變化量 (Δv)", img: "ch2-p5.jpg" },
-            { en: "Equations of Kinematics", pos: "n.", zh: "等加速度直線運動三大公式", def: "⚠️ 僅適用於「加速度 a 為定值」的條件下。", formula: "$$v = v_0 + at$$ $$\\Delta x = v_0 t + \\frac{1}{2}at^2$$ $$v^2 = v_0^2 + 2a\\Delta x$$", img: "ch2-p6.jpg" }
+            { 
+                en: "Graphical Analysis", 
+                pos: "n.", 
+                zh: "直線運動圖形分析", 
+                def: "透過位置(x)、速度(v)、加速度(a)對時間(t)的關係圖解題。", 
+                note: "📐 切線斜率意涵：<br>x-t 圖的切線斜率 = 瞬時速度 (v) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; v-t 圖的切線斜率 = 瞬時加速度 (a)<br><br>🟦 面積意涵：<br>v-t 圖下的面積 = 位移 (Δx) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a-t 圖下的面積 = 速度變化量 (Δv)", 
+                img: "ch2-p5.jpg" 
+            },
+            { 
+                en: "Equations of Kinematics", 
+                pos: "n.", 
+                zh: "等加速度直線運動三大公式", 
+                def: "⚠️ 僅適用於「加速度 a 為定值」的條件下。", 
+                formula: "$$v = v_0 + at$$ $$\\Delta x = v_0 t + \\frac{1}{2}at^2$$ $$v^2 = v_0^2 + 2a\\Delta x$$", 
+                img: "ch2-p6.jpg" 
+            }
         ]
     },
-    { id: 3, title: "靜力平衡 (Static Equilibrium)", words: [{ en: "Torque", pos: "n.", zh: "力矩", formula: "$$\\vec{\\tau} = \\vec{r} \\times \\vec{F}$$", img: "ch3-p1.jpg" }, { en: "Equilibrium Conditions", pos: "n.", zh: "平衡條件", formula: "$$\\sum \\vec{F} = 0, \\quad \\sum \\vec{\\tau} = 0$$", img: "ch3-p2.jpg" }] },
-    { id: 4, title: "牛頓運動定律 (Newton's Laws of Motion)", words: [{ en: "Newton's Second Law", pos: "n.", zh: "牛頓第二定律", formula: "$$\\sum \\vec{F} = m\\vec{a} = \\frac{d\\vec{p}}{dt}$$", img: "ch4-p1.jpg" }, { en: "Friction", pos: "n.", zh: "摩擦力", formula: "$$f_s \\leq \\mu_s N, \\quad f_k = \\mu_k N$$", img: "ch4-p2.jpg" }] },
+    { 
+        id: 3, 
+        title: "靜力平衡 (Static Equilibrium)", 
+        words: [
+            { 
+                en: "Torque", 
+                pos: "n.", 
+                zh: "力矩", 
+                formula: "$$\\vec{\\tau} = \\vec{r} \\times \\vec{F}$$", 
+                img: "ch3-p1.jpg" 
+            }, 
+            { 
+                en: "Equilibrium Conditions", 
+                pos: "n.", 
+                zh: "平衡條件", 
+                formula: "$$\\sum \\vec{F} = 0, \\quad \\sum \\vec{\\tau} = 0$$", 
+                img: "ch3-p2.jpg" 
+            }
+        ] 
+    },
+    { 
+        id: 4, 
+        title: "牛頓運動定律 (Newton's Laws of Motion)", 
+        words: [
+            { 
+                en: "Newton's Second Law", 
+                pos: "n.", 
+                zh: "牛頓第二定律", 
+                formula: "$$\\sum \\vec{F} = m\\vec{a} = \\frac{d\\vec{p}}{dt}$$", 
+                img: "ch4-p1.jpg" 
+            }, 
+            { 
+                en: "Friction", 
+                pos: "n.", 
+                zh: "摩擦力", 
+                formula: "$$f_s \\leq \\mu_s N, \\quad f_k = \\mu_k N$$", 
+                img: "ch4-p2.jpg" 
+            }
+        ] 
+    },
     { id: 5, title: "功與能 (Work and Energy)", words: [{ en: "Work", pos: "n.", zh: "功", formula: "$$W = \\int \\vec{F} \\cdot d\\vec{s}$$", img: "ch5-p1.jpg" }] },
     { id: 6, title: "衝量與動量 (Impulse and Momentum)", words: [{ en: "Momentum", pos: "n.", zh: "動量", formula: "$$\\vec{p} = m\\vec{v}$$", img: "ch6-p1.jpg" }] },
     { id: 7, title: "剛體動力學 (Dynamics of Rigid Bodies)", words: [{ en: "Moment of Inertia", pos: "n.", zh: "轉動慣量", formula: "$$I = \\int r^2 dm$$", img: "ch7-p1.jpg" }] },
@@ -102,6 +296,7 @@ const examples = [
     }
 ];
 
+// 自動生成第 3~24 章的例題空殼
 for(let i = 3; i <= 24; i++) {
     examples.push({ id: i, title: `第 ${i} 章例題預留`, problems: [] });
 }
@@ -115,6 +310,7 @@ function init() {
     chapterMenu.innerHTML = '';
     exampleMenu.innerHTML = '';
 
+    // 渲染單字清單
     chapters.forEach(ch => {
         const card = document.createElement('div');
         card.className = 'chapter-card';
@@ -124,6 +320,7 @@ function init() {
         chapterMenu.appendChild(card);
     });
 
+    // 渲染例題清單
     examples.forEach(ex => {
         const card = document.createElement('div');
         card.className = 'example-card';
