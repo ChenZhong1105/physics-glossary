@@ -497,34 +497,81 @@ const chapters = [
     }
 ];
 
-// --- 核心函數：初始化與渲染 (已加入瀏覽器「上一頁」支援) ---
+// --- 以下為新增的精選例題資料庫 (Examples) ---
+const examples = [
+    {
+        id: 1,
+        title: "物理量 (Physical Quantities)",
+        problems: [
+            {
+                title: "例題 1：外積與面積",
+                desc: "若空間中兩向量為 $\\vec{A} = 2\\hat{i} + \\hat{j} - \\hat{k}$ 與 $\\vec{B} = \\hat{i} - \\hat{j} + 2\\hat{k}$，求兩向量所張成之平行四邊形面積。",
+                ans: "面積 $= |\\vec{A} \\times \\vec{B}|$，計算結果為 $\\sqrt{35}$",
+                img: "ex1-1.jpg" // 預留照片檔名規則：ex(章節)-(題號).jpg
+            }
+        ]
+    },
+    {
+        id: 2,
+        title: "運動學 (Kinematics)",
+        problems: [
+            {
+                title: "例題 1：微積分連鎖律應用",
+                desc: "已知質點加速度與位置的關係為 $a = -4x$，且當 $x=0$ 時速度 $v=10$。求物體運動到 $x=2$ 時的速度大小？",
+                ans: "利用 $a = v\\frac{dv}{dx}$ 積分， $\\int_{10}^{v} v' dv' = \\int_{0}^{2} -4x dx$，解得 $v = \\sqrt{84}$",
+                img: "ex2-1.jpg"
+            }
+        ]
+    }
+    // 3~24 章暫時預留空陣列
+];
+
+for(let i = 3; i <= 24; i++) {
+    examples.push({ id: i, title: `第 ${i} 章例題預留`, problems: [] });
+}
+
+// --- 核心函數：初始化與渲染 (加入歷史紀錄與雙清單切換) ---
 function init() {
-    const menu = document.getElementById('chapter-menu');
-    if(!menu) return;
-    menu.innerHTML = '';
+    const chapterMenu = document.getElementById('chapter-menu');
+    const exampleMenu = document.getElementById('example-menu');
+    if(!chapterMenu || !exampleMenu) return;
+    
+    chapterMenu.innerHTML = '';
+    exampleMenu.innerHTML = '';
+
+    // 渲染「單字與公式」選單
     chapters.forEach(ch => {
         const card = document.createElement('div');
         card.className = 'chapter-card';
         const titleParts = ch.title.split(' (');
-        const chineseTitle = titleParts[0];
-        const englishTitle = titleParts[1] ? titleParts[1].replace(')', '') : '';
         card.innerHTML = `
             <strong>第 ${ch.id} 章</strong><br>
-            <div style="font-size: 1.1em; margin-top: 5px;">${chineseTitle}</div>
-            <div style="font-size: 0.8em; color: #7f8c8d; font-style: italic; margin-top: 3px;">${englishTitle}</div>
+            <div style="font-size: 1.1em; margin-top: 5px;">${titleParts[0]}</div>
         `;
         card.onclick = () => showChapter(ch.id);
-        menu.appendChild(card);
+        chapterMenu.appendChild(card);
     });
 
-    // 網頁剛載入時，記錄「首頁」狀態
+    // 渲染「精選例題」選單
+    examples.forEach(ex => {
+        const card = document.createElement('div');
+        card.className = 'example-card'; // 套用橘色卡片樣式
+        const titleParts = ex.title.split(' (');
+        card.innerHTML = `
+            <strong>第 ${ex.id} 章</strong><br>
+            <div style="font-size: 1.1em; margin-top: 5px;">${titleParts[0]}</div>
+        `;
+        card.onclick = () => showExample(ex.id);
+        exampleMenu.appendChild(card);
+    });
+
     history.replaceState({ page: 'home' }, '', window.location.pathname);
 }
 
-// 加入 pushHistory 參數，控制是否要新增歷史紀錄
 function showChapter(id, pushHistory = true) {
     const ch = chapters.find(c => c.id === id);
-    document.getElementById('chapter-menu').style.display = 'none';
+    document.getElementById('home-area').style.display = 'none';
+    document.getElementById('example-area').style.display = 'none';
     document.getElementById('content-area').style.display = 'block';
     document.getElementById('back-btn').style.display = 'inline-block';
     document.getElementById('chapter-title').innerText = `Chapter ${ch.id}: ${ch.title}`;
@@ -538,48 +585,59 @@ function showChapter(id, pushHistory = true) {
             ${w.formula ? `<div class="formula">${w.formula}</div>` : ''}
             ${w.note ? `<p style="color:#666; font-size:0.9em;">${w.note}</p>` : ''}
             ${w.formula_extra ? `<div class="formula">${w.formula_extra}</div>` : ''}
-            
-            ${w.img ? `<div style="margin: 15px 0 10px 0; text-align: center;">
-                        <img src="${w.img}" alt="推導照片" style="max-width:100%; border-radius:8px; border:1px solid #ddd;" onerror="this.style.display='none'">
-                      </div>` : ''}
+            ${w.img ? `<div style="margin: 15px 0 10px 0; text-align: center;"><img src="${w.img}" alt="推導照片" style="max-width:100%; border-radius:8px; border:1px solid #ddd;" onerror="this.style.display='none'"></div>` : ''}
         </div>
     `).join('');
     
     window.scrollTo(0,0);
-    if(window.MathJax) {
-        MathJax.typeset();
-    }
-
-    // 點進章節時，告訴瀏覽器「這是一頁新的紀錄」
-    if (pushHistory) {
-        history.pushState({ page: 'chapter', id: id }, '', `#chapter-${id}`);
-    }
+    if(window.MathJax) MathJax.typeset();
+    if (pushHistory) history.pushState({ page: 'chapter', id: id }, '', `#chapter-${id}`);
 }
 
-// 加入 pushHistory 參數
-function showMenu(pushHistory = true) {
-    document.getElementById('chapter-menu').style.display = 'grid';
+function showExample(id, pushHistory = true) {
+    const ex = examples.find(e => e.id === id);
+    document.getElementById('home-area').style.display = 'none';
     document.getElementById('content-area').style.display = 'none';
+    document.getElementById('example-area').style.display = 'block';
+    document.getElementById('back-btn').style.display = 'inline-block';
+    document.getElementById('example-title').innerText = `精選例題 - 第 ${ex.id} 章`;
+    
+    const list = document.getElementById('example-list');
+    if(!ex.problems || ex.problems.length === 0) {
+        list.innerHTML = `<p style="text-align:center; color:#7f8c8d; margin-top:30px; font-size:1.1em;">🚧 尚無例題，持續更新中...</p>`;
+    } else {
+        list.innerHTML = ex.problems.map(p => `
+            <div class="problem-card">
+                <div class="problem-header">${p.title}</div>
+                <p><strong>題目：</strong>${p.desc}</p>
+                ${p.ans ? `<div class="formula"><strong>思路：</strong><br>${p.ans}</div>` : ''}
+                ${p.img ? `<div style="margin: 15px 0 10px 0; text-align: center;"><img src="${p.img}" alt="例題解答" style="max-width:100%; border-radius:8px; border:1px solid #ddd;" onerror="this.style.display='none'"></div>` : ''}
+            </div>
+        `).join('');
+    }
+    
+    window.scrollTo(0,0);
+    if(window.MathJax) MathJax.typeset();
+    if (pushHistory) history.pushState({ page: 'example', id: id }, '', `#example-${id}`);
+}
+
+function showMenu(pushHistory = true) {
+    document.getElementById('home-area').style.display = 'block';
+    document.getElementById('content-area').style.display = 'none';
+    document.getElementById('example-area').style.display = 'none';
     document.getElementById('back-btn').style.display = 'none';
     
-    // 點擊網頁上的「返回按鈕」時，也推入首頁的紀錄
-    if (pushHistory) {
-        history.pushState({ page: 'home' }, '', window.location.pathname);
-    }
+    if (pushHistory) history.pushState({ page: 'home' }, '', window.location.pathname);
 }
 
-// 關鍵！監聽手機或瀏覽器的實體「上一頁」與「下一頁」動作
 window.addEventListener('popstate', (event) => {
-    if (event.state && event.state.page === 'chapter') {
-        // 如果歷史紀錄是章節，就顯示章節（且不再推入新紀錄）
-        showChapter(event.state.id, false);
+    if (event.state) {
+        if(event.state.page === 'chapter') showChapter(event.state.id, false);
+        else if(event.state.page === 'example') showExample(event.state.id, false);
+        else showMenu(false);
     } else {
-        // 否則退回首頁選單
         showMenu(false);
     }
 });
 
 document.addEventListener('DOMContentLoaded', init);
-
-
-
