@@ -192,7 +192,7 @@ const chapters = [
                 pos: "n.", 
                 zh: "直線運動圖形分析", 
                 def: "透過位置(x)、速度(v)、加速度(a)對時間(t)的關係圖解題。",
-                note: "📐 切線斜率意涵：\nx-t 圖的切線斜率 = 瞬時速度 (v)。\nv-t 圖的切線斜率 = 瞬時加速度 (a)。\n\n🟦 面積意涵：\nv-t 圖下的面積 = 位移 (Δx)。\na-t 圖下的面積 = 速度變化量 (Δv)。",
+                note: "📐 切線斜率意涵：<br>x-t 圖的切線斜率 = 瞬時速度 (v) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; v-t 圖的切線斜率 = 瞬時加速度 (a)<br><br>🟦 面積意涵：<br>v-t 圖下的面積 = 位移 (Δx) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a-t 圖下的面積 = 速度變化量 (Δv)",
                 img: "ch2-p5.jpg"
             },
             { 
@@ -641,6 +641,7 @@ window.addEventListener('popstate', (event) => {
 });
 
 document.addEventListener('DOMContentLoaded', init);
+
 
 
 
