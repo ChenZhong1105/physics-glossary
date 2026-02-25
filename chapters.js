@@ -271,6 +271,31 @@ const chapters = [
                 note: "1️⃣ 速度關係：$v = r\\omega$<br>2️⃣ 加速度關係：$\\vec{a} = \\vec{a}_t + \\vec{a}_n$<br><br>👉 <b>切線加速度 (Tangential Acceleration)</b> $a_t$：改變速率大小。<br>👉 <b>法線/向心加速度 (Normal / Centripetal / Radial Acceleration)</b> $a_n$ 或 $a_c$：改變速度方向。",
                 formula: "$$a_t = \\frac{dv}{dt} = r\\alpha$$ $$a_n = \\frac{v^2}{r} = r\\omega^2$$ $$|\\vec{a}| = \\sqrt{a_t^2 + a_n^2}$$",
                 img: "ch2-p14.jpg"
+            },
+            {
+                en: "Absolute Motion",
+                pos: "n.",
+                zh: "絕對運動",
+                def: "觀察者位於「靜止慣性座標系」(通常指地面) 所觀察到的物體運動。",
+                formula: "$$\\vec{r}_A, \\quad \\vec{v}_A, \\quad \\vec{a}_A$$",
+                img: "ch2-p15.jpg"
+            },
+            {
+                en: "Relative Motion",
+                pos: "n.",
+                zh: "相對運動",
+                def: "觀察者位於「移動座標系」(Moving Frame) 所觀察到的物體運動。",
+                formula: "$$\\vec{r}_{A/B} = \\vec{r}_A - \\vec{r}_B$$",
+                img: "ch2-p16.jpg"
+            },
+            {
+                en: "Relationship of Absolute and Relative Motion",
+                pos: "n.",
+                zh: "絕對與相對運動之關係",
+                def: "絕對速度 = 參考系速度 + 相對速度。這是一種向量加法關係。",
+                note: "💡 記憶口訣：利用腳標連鎖規則 (Chain Rule for Subscripts)。<br>A對地 = A對B + B對地 (中間的 B 像是連鎖消掉一樣)。",
+                formula: "$$\\vec{v}_{A} = \\vec{v}_{B} + \\vec{v}_{A/B}$$ $$\\vec{a}_{A} = \\vec{a}_{B} + \\vec{a}_{A/B}$$",
+                img: "ch2-p17.jpg"
             }
         ]
     },
