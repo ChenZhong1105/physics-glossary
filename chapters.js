@@ -268,8 +268,9 @@ const chapters = [
                 pos: "n.",
                 zh: "線量與角量的關係",
                 def: "建立平移與轉動的橋樑。總加速度為切線與法線兩向量的向量和，因此在轉彎時加速度必不只沿著切線方向。",
-                note: "1️⃣ 速度關係：$v = r\\omega$<br>2️⃣ 加速度關係：$\\vec{a} = \\vec{a}_t + \\vec{a}_n$<br><br>👉 <b>切線加速度 (Tangential Acceleration)</b> $a_t$：改變速率大小。<br>👉 <b>法線/向心加速度 (Normal / Centripetal / Radial Acceleration)</b> $a_n$ 或 $a_c$：改變速度方向。",
-                formula: "$$a_t = \\frac{dv}{dt} = r\\alpha$$ $$a_n = \\frac{v^2}{r} = r\\omega^2$$ $$|\\vec{a}| = \\sqrt{a_t^2 + a_n^2}$$",
+                note: "👉 切線加速度 (Tangential Acceleration)：改變速率大小。<br>👉 法線加速度 / 向心加速度 / 徑向加速度 (Normal / Centripetal / Radial Acceleration)：改變速度方向。",
+                formula: "$$v = r\\omega$$ $$\\vec{a} = \\vec{a}_t + \\vec{a}_n$$",
+                formula_extra: "$$a_t = \\frac{dv}{dt} = r\\alpha$$ $$a_n = \\frac{v^2}{r} = r\\omega^2$$ $$|\\vec{a}| = \\sqrt{a_t^2 + a_n^2}$$",
                 img: "ch2-p14.jpg"
             },
             {
