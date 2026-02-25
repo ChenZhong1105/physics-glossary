@@ -219,8 +219,58 @@ const chapters = [
                 def: "僅受重力作用的平面運動。水平方向為等速運動，鉛直方向為重力加速度 (g) 的等加速運動。",
                 note: "💡 軌跡方程式 (Trajectory Equation)：消去時間 t 後可得拋物線方程式。",
                 formula: "$$x(t) = v_{0}\\cos\\theta \\cdot t$$ $$y(t) = v_{0}\\sin\\theta \\cdot t - \\frac{1}{2}gt^2$$ $$y = (\\tan\\theta)x - \\frac{g}{2(v_0\\cos\\theta)^2}x^2$$",
-                img: "ch2-p8.jpg",
-                img2: "ch2-p8-2.jpg"
+                img: "ch2-p8.jpg"
+            },
+            {
+                en: "Angular Displacement",
+                pos: "n.",
+                zh: "角位移",
+                def: "物體轉動的特定角度。標準單位為弧度 (rad)。",
+                note: "💡 弧度是「無因次量」(Dimensionless)，在因次分析時不影響長度或質量。",
+                formula: "$$\\Delta \\theta = \\theta_2 - \\theta_1$$",
+                img: "ch2-p9.jpg"
+            },
+            {
+                en: "Angular Velocity",
+                pos: "n.",
+                zh: "角速度",
+                def: "角位移對時間的變化率。計算標準單位為 rad/s。",
+                note: "⚠️ 單位換算：若題目給定 rpm (revolutions per minute, 每分鐘轉速)，須換算：1 rpm = 2π / 60 rad/s。",
+                formula: "$$\\omega = \\lim_{\\Delta t \\to 0} \\frac{\\Delta \\theta}{\\Delta t} = \\frac{d\\theta}{dt}$$",
+                img: "ch2-p10.jpg"
+            },
+            {
+                en: "Angular Acceleration",
+                pos: "n.",
+                zh: "角加速度",
+                def: "角速度對時間的變化率。單位為 rad/s²。",
+                formula: "$$\\alpha = \\lim_{\\Delta t \\to 0} \\frac{\\Delta \\omega}{\\Delta t} = \\frac{d\\omega}{dt} = \\frac{d^2\\theta}{dt^2}$$",
+                img: "ch2-p11.jpg"
+            },
+            {
+                en: "Angular Kinematics Relations",
+                pos: "n.",
+                zh: "平面轉動角量間的關係",
+                def: "角位移、角速度與角加速度之間的微積分關係。同樣可使用連鎖律將 α 轉換為對 θ 的積分。",
+                formula: "$$\\omega = \\frac{d\\theta}{dt}, \\quad \\alpha = \\frac{d\\omega}{dt} = \\omega\\frac{d\\omega}{d\\theta}$$",
+                img: "ch2-p12.jpg"
+            },
+            {
+                en: "Equations of Constant Angular Acceleration",
+                pos: "n.",
+                zh: "等角加速度轉動三大公式",
+                def: "當角加速度 α 為定值時適用，完美類比直線運動的等加速公式。",
+                formula: "$$\\omega = \\omega_0 + \\alpha t$$ $$\\Delta \\theta = \\omega_0 t + \\frac{1}{2}\\alpha t^2$$ $$\\omega^2 = \\omega_0^2 + 2\\alpha\\Delta \\theta$$",
+                img: "ch2-p13.jpg"
+            },
+            {
+                en: "Linear and Angular Relations",
+                pos: "n.",
+                zh: "線量與角量的關係",
+                def: "建立平移與轉動的橋樑。總加速度為切線與法線兩向量的向量和，因此在轉彎時加速度必不只沿著切線方向。",
+                note: "1️⃣ 速度關係：$v = r\\omega$<br>2️⃣ 加速度關係：$\\vec{a} = \\vec{a}_t + \\vec{a}_n$<br><br>👉 <b>切線加速度 (Tangential Acceleration)</b> $a_t$：改變速率大小。<br>👉 <b>法線/向心加速度 (Normal / Centripetal / Radial Acceleration)</b> $a_n$ 或 $a_c$：改變速度方向。",
+                formula: "$$a_t = \\frac{dv}{dt} = r\\alpha$$ $$a_n = \\frac{v^2}{r} = r\\omega^2$$ $$|\\vec{a}| = \\sqrt{a_t^2 + a_n^2}$$",
+                img: "ch2-p14.jpg"
             }
         ]
     },
