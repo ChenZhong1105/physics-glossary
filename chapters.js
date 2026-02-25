@@ -295,7 +295,8 @@ const chapters = [
                 def: "絕對速度 = 參考系速度 + 相對速度。這是一種向量加法關係。",
                 note: "💡 記憶口訣：利用腳標連鎖規則 (Chain Rule for Subscripts)。<br>A對地 = A對B + B對地 (中間的 B 像是連鎖消掉一樣)。",
                 formula: "$$\\vec{v}_{A} = \\vec{v}_{B} + \\vec{v}_{A/B}$$ $$\\vec{a}_{A} = \\vec{a}_{B} + \\vec{a}_{A/B}$$",
-                img: "ch2-p17.jpg"
+                img: "ch2-p17.jpg",
+                img: "ch2-p17-2.jpg"
             }
         ]
     },
