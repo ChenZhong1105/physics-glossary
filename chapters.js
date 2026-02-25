@@ -372,9 +372,9 @@ const examples = [
             {
                 title: "題型：外積與面積",
                 desc: "若空間中兩向量為 $\\vec{A} = 2\\hat{i} + \\hat{j} - \\hat{k}$ 與 $\\vec{B} = \\hat{i} - \\hat{j} + 2\\hat{k}$，求兩向量所張成之平行四邊形面積。",
-                q_img: "", // ⬅️ 如果題目本身是截圖，填入檔名，例如 "ex1-1-q.jpg"
+                q_img: "", 
                 ans: "面積 $= |\\vec{A} \\times \\vec{B}|$，計算結果為 $\\sqrt{35}$",
-                ans_img: "ex1-1-ans.jpg" // ⬅️ 這裡放計算過程的詳解圖片
+                ans_img: "ex1-1-ans.jpg" 
             }
         ]
     },
@@ -393,14 +393,12 @@ const examples = [
     }
 ];
 
-// 自動生成第 3~24 章的例題空殼
 for(let i = 3; i <= 24; i++) {
     examples.push({ id: i, title: `第 ${i} 章例題預留`, problems: [] });
 }
 
 // --- 核心函數：初始化與渲染 ---
 function init() {
-    // 💡 關鍵修復：阻止瀏覽器在重新整理時自動往下滾動
     if ('scrollRestoration' in history) {
         history.scrollRestoration = 'manual';
     }
@@ -414,7 +412,6 @@ function init() {
     chapterMenu.innerHTML = '';
     exampleMenu.innerHTML = '';
 
-    // 渲染單字清單 (自動將第 0 章分流)
     chapters.forEach(ch => {
         const card = document.createElement('div');
         card.className = 'chapter-card';
@@ -422,15 +419,13 @@ function init() {
         card.innerHTML = `<strong>第 ${ch.id} 章</strong><br><div style="font-size: 1.1em; margin-top: 5px;">${titleParts[0]}</div>`;
         card.onclick = () => showChapter(ch.id);
         
-        // 分流邏輯：id 是 0 的丟進專屬區塊，其他的丟進原本區塊
-        if (ch.id === 0) {
+        if (Number(ch.id) === 0) {
             chapter0Menu.appendChild(card);
         } else {
             chapterMenu.appendChild(card);
         }
     });
 
-    // 渲染例題清單
     examples.forEach(ex => {
         const card = document.createElement('div');
         card.className = 'example-card';
@@ -441,8 +436,6 @@ function init() {
     });
 
     history.replaceState({ page: 'home' }, '', window.location.pathname);
-    
-    // 💡 關鍵修復：確保網頁一載入，畫面強制回到最上方
     window.scrollTo(0, 0);
 }
 
@@ -474,7 +467,6 @@ function showChapter(id, pushHistory = true) {
     if (pushHistory) history.pushState({ page: 'chapter', id: id }, '', `#chapter-${id}`);
 }
 
-// --- 替換從這裡開始 ---
 function showExample(id, pushHistory = true) {
     const ex = examples.find(e => e.id === id);
     document.getElementById('home-area').style.display = 'none';
@@ -497,7 +489,7 @@ function showExample(id, pushHistory = true) {
                 <button id="btn-${index}" class="toggle-btn" onclick="toggleAnswer(${index})">顯示答案</button>
 
                 <div id="ans-${index}" style="display: none; margin-top: 15px; padding-top: 15px; border-top: 1px dashed #ccc;">
-                    ${p.ans ? `<div class="formula"><strong>思路與解答：</strong><br>${p.ans}</div>` : ''}
+                    ${p.ans ? `<div class="formula" style="font-size: 1.1em; line-height: 1.6;"><strong>思路與解答：</strong><br>${p.ans}</div>` : ''}
                     ${p.ans_img ? `<div style="margin: 15px 0 10px 0; text-align: center;"><img src="${p.ans_img}" alt="詳解照片" style="max-width:100%; border-radius:8px; border:1px solid #ddd;" onerror="this.style.display='none'"></div>` : ''}
                 </div>
             </div>
@@ -505,26 +497,48 @@ function showExample(id, pushHistory = true) {
     }
     
     window.scrollTo(0,0);
-    if(window.MathJax) MathJax.typeset();
+    // 加上這行，確保展開後的公式也能被正確渲染
+    if(window.MathJax) MathJax.typesetPromise(); 
     if (pushHistory) history.pushState({ page: 'example', id: id }, '', `#example-${id}`);
 }
 
-// 🌟 新增：用來切換答案顯示/隱藏的魔法函數
+// 切換答案顯示/隱藏的魔法函數
 window.toggleAnswer = function(index) {
     const ansDiv = document.getElementById(`ans-${index}`);
     const btn = document.getElementById(`btn-${index}`);
     
     if (ansDiv.style.display === 'none') {
-        ansDiv.style.display = 'block'; // 顯示答案
-        btn.innerText = '隱藏答案';     // 更改按鈕文字
-        btn.classList.add('active');    // 加入 CSS active 類別（變紅色）
+        ansDiv.style.display = 'block'; 
+        btn.innerText = '隱藏答案';     
+        btn.classList.add('active');    
     } else {
-        ansDiv.style.display = 'none';  // 隱藏答案
-        btn.innerText = '顯示答案';     // 恢復按鈕文字
-        btn.classList.remove('active'); // 移除 CSS active 類別（變回藍色）
+        ansDiv.style.display = 'none';  
+        btn.innerText = '顯示答案';     
+        btn.classList.remove('active'); 
     }
 };
-// --- 替換到這裡結束 ---
+
+function showMenu(pushHistory = true) {
+    document.getElementById('home-area').style.display = 'block';
+    document.getElementById('content-area').style.display = 'none';
+    document.getElementById('example-area').style.display = 'none';
+    document.getElementById('back-btn').style.display = 'none';
+    
+    if (pushHistory) history.pushState({ page: 'home' }, '', window.location.pathname);
+    window.scrollTo(0, 0);
+}
+
+window.addEventListener('popstate', (event) => {
+    if (event.state) {
+        if(event.state.page === 'chapter') showChapter(event.state.id, false);
+        else if(event.state.page === 'example') showExample(event.state.id, false);
+        else showMenu(false);
+    } else {
+        showMenu(false);
+    }
+});
+
+document.addEventListener('DOMContentLoaded', init);
 
 function showMenu(pushHistory = true) {
     document.getElementById('home-area').style.display = 'block';
